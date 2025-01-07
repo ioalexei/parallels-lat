@@ -1,11 +1,11 @@
 ---
-title: Beelingcat geo talks
+title: Bellingcat geo talks
 date:
 excerpt: 
  
 editedDate:
 tags: posts
-draft: false
+draft: true
 ---
 # bellingcat geo talks
 
