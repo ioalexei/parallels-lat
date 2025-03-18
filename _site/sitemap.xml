@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	
+	<url>
+		<loc>https://parallels.lat/blog/2019-06-26-hello-world/</loc>
+		<lastmod>2019-06-26</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2019-06-27-india-reference-map/</loc>
+		<lastmod>2019-06-27</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2019-06-27-map-of-hackney/</loc>
+		<lastmod>2019-06-27</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2019-07-16-india-nfhs-map-child-malnutrition/</loc>
+		<lastmod>2019-07-16</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2019-07-16-india-nfhs-scrape-pdfs-r/</loc>
+		<lastmod>2019-07-16</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2020-02-28-congo-peatland-oil-exploration/</loc>
+		<lastmod>2020-02-28</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2021-12-08-drc-dam-threat-map/</loc>
+		<lastmod>2021-12-08</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2021-12-14-simulating-low-bandwidth-webmap-testing/</loc>
+		<lastmod>2021-12-14</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2021-12-15-conflict-rubies-myanmar/</loc>
+		<lastmod>2021-12-15</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2022-05-11-two-google-maps-podcasts/</loc>
+		<lastmod>2022-05-11</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2022-09-22-global-witness-palm-oil-maps/</loc>
+		<lastmod>2022-09-22</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-02-02-manila-airport-philippines-wetlands/</loc>
+		<lastmod>2023-02-02</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-02-18-python-svg-to-png/</loc>
+		<lastmod>2023-02-18</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-03-01-humanitarian-qgis-training/</loc>
+		<lastmod>2023-03-01</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-03-07-defra-map-design-standards/</loc>
+		<lastmod>2023-03-07</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-03-07-hmong-story-map/</loc>
+		<lastmod>2023-03-07</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-03-15-qgis-earthquake-intensity-colour-scale/</loc>
+		<lastmod>2023-03-15</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-07-05-plaintext-changelogs-for-qgis-projects/</loc>
+		<lastmod>2023-07-05</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-08-01-geometrycollection-to-multipolygon/</loc>
+		<lastmod>2023-08-01</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-10-25-libya-storm-daniel-infrastructure-map/</loc>
+		<lastmod>2023-10-25</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-10-25-shaded-relief-in-qgis/</loc>
+		<lastmod>2023-10-25</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2023-11-17-automating-geodata-processing-brc/</loc>
+		<lastmod>2023-11-17</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-01-12-xmltodict-now-available-in-the-esri-python-repo/</loc>
+		<lastmod>2024-01-12</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-01-31-red-crossred-crescent-geospatial-community-in-2023/</loc>
+		<lastmod>2024-01-31</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-01-31-some-things-we-worked-on-in-2023/</loc>
+		<lastmod>2024-01-31</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-02-01-disaster-maps-for-sharing-on-whatsapp/</loc>
+		<lastmod>2024-02-01</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-02-01-geocoding-channel-islands-isle-of-man-postcodes/</loc>
+		<lastmod>2024-02-01</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-02-02-link-four-pitfalls-of-spatiotemporal-analysis/</loc>
+		<lastmod>2024-02-02</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-02-06-video-qgis-feature-frenzy/</loc>
+		<lastmod>2024-02-06</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-07-weeknote/</loc>
+		<lastmod>2024-02-16</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-02-21-an-plus-naga-squared/</loc>
+		<lastmod>2024-02-21</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-08-weeknote/</loc>
+		<lastmod>2024-02-27</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-03-04-creating-postcode-polygons-from-uprn-data/</loc>
+		<lastmod>2024-03-04</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-09-weeknote/</loc>
+		<lastmod>2024-03-05</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-03-06-converting-our-eps-logo-archive-to-svg-and-png/</loc>
+		<lastmod>2024-03-06</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-10-weeknote/</loc>
+		<lastmod>2024-03-18</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-03-21-the-economists-map-style/</loc>
+		<lastmod>2024-03-21</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-12-editing-data-conversations-counting-trees/</loc>
+		<lastmod>2024-03-29</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-14-geocoding-and-safety-trainings/</loc>
+		<lastmod>2024-04-09</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-04-23-bellingcat-podcasts-detecting-ships-and-building-damage-with-sar/</loc>
+		<lastmod>2024-04-23</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-16-health-boundaries-esri-dashboards-and-climate-risk-maps/</loc>
+		<lastmod>2024-04-24</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-17-climate-risk-and-service-user-maps-gis-training/</loc>
+		<lastmod>2024-05-09</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-05-22-fotokino-cartography-exhibition-marseille/</loc>
+		<lastmod>2024-05-22</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-18-training-debrief-deprivation-mapping-and-community-gardening/</loc>
+		<lastmod>2024-05-24</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-05-30-space-shuttle-maps/</loc>
+		<lastmod>2024-05-30</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-05-31-amnesty-website-open-sourced/</loc>
+		<lastmod>2024-05-31</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-20-green-view-the-art-of-training-and-data-gardening/</loc>
+		<lastmod>2024-06-10</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-07-04-hdx-launched-data-access-api/</loc>
+		<lastmod>2024-07-04</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-23-postcode-area-centres-api-documentation-travel-time-to-events/</loc>
+		<lastmod>2024-07-11</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-08-14-cartography-typography-1/</loc>
+		<lastmod>2024-08-14</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2024-08-15-kyle-in-target-parking-lot/</loc>
+		<lastmod>2024-08-15</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2025-02-21-nts-king-tubbys-dub-lessons/</loc>
+		<lastmod>2025-01-02</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/about/</loc>
+		<lastmod>2025-03-18</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/</loc>
+		<lastmod>2025-03-18</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/</loc>
+		<lastmod>2025-03-18</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/tags/</loc>
+		<lastmod>2025-03-18</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2025-03-18-is-it-in-london/</loc>
+		<lastmod>2025-03-18</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/feed/feed.xml</loc>
+		<lastmod>2025-03-18</lastmod>
+	</url>
+</urlset>

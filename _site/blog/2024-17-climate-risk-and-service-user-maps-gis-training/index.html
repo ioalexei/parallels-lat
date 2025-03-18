@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>2024 ▸ 17 ▸Climate risk and service user maps, GIS training</title>
+		<meta name="description" content="Mostly maps">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Parallels">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+		<link rel="me" href="https://mapstodon.space/@alexei">
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">Parallels</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1 id="2024-17-climate-risk-and-service-user-maps-gis-training">2024 ▸ 17 ▸Climate risk and service user maps, GIS training</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2024-05-09">09 May 2024</time></li>
+</ul>
+
+<h1 id="uk-climate-risk-maps">UK Climate risk maps</h1>
+<p>Our team received a request to make some maps based on data from the <a href="https://uk-cri.org/">UK Climate Risk Indicators</a> website, to be used in an upcoming report. It took me a long time to figure out how to download the right data — I didn’t find the website very intuitive — but once I had that sorted, I made a series of maps comparing various weather-related risks in different climate change scenarios.</p>
+<p><picture><source type="image/avif" srcset="/blog/2024-17-climate-risk-and-service-user-maps-gis-training/5i_AZNnrEL-1624.avif 1624w"><source type="image/webp" srcset="/blog/2024-17-climate-risk-and-service-user-maps-gis-training/5i_AZNnrEL-1624.webp 1624w"><img loading="lazy" decoding="async" src="/blog/2024-17-climate-risk-and-service-user-maps-gis-training/5i_AZNnrEL-1624.png" alt="Screenshot of UK Climate Risk Indicators webmap tool" width="1624" height="605"></picture></p>
+<p><em>Screenshot of UK Climate Risk Indicators webmap tool</em></p>
+<p>I chose not to keep UKCRI’s magma palette, since a simple single-hue palette seemed to communicate the trends more effectively in this case. I also reduced the number of classes shown in each map to around five (a rule of thumb is that it’s hard to see differences if more than seven classes are used), and standardised the scales across each pair of maps to make them easily comparable. The UKCRI maps generate the classes/legend dynamically for each dataset, so comparing them using the tool is hard to do unless you’re paying close attention (the same colours refer to different values on each map).</p>
+<h1 id="mapping-service-users-by-postcode-area">Mapping service users by postcode area</h1>
+<p>I worked on another request that came in to repeat some analysis I helped with in 2023 to summarise where one of our services has been working with people in Wales. The source data was a list of service users by postcode <a href="https://ideal-postcodes.co.uk/guides/uk-postcode-format">outcode</a> (the first part of a UK postcode, before the space), which they wanted mapping to health board boundaries.</p>
+<p><picture><source type="image/avif" srcset="/blog/2024-17-climate-risk-and-service-user-maps-gis-training/pFjIndz0co-724.avif 724w"><source type="image/webp" srcset="/blog/2024-17-climate-risk-and-service-user-maps-gis-training/pFjIndz0co-724.webp 724w"><img loading="lazy" decoding="async" src="/blog/2024-17-climate-risk-and-service-user-maps-gis-training/pFjIndz0co-724.png" alt="Screenshot of Welsh health board boundaries" width="724" height="447"></picture></p>
+<p><em>Screenshot of Welsh health board boundaries; service user data not shown.</em></p>
+<p>To prepare the data, I went through these steps:</p>
+<ul>
+<li>In Excel, create a pivot table to show the count of users in each outcode area, export to CSV</li>
+<li>Using Python and Pandas, load the latest <a href="https://geoportal.statistics.gov.uk/search?q=PRD_ONSPD+FEB_2024&amp;sort=Date+Created%7Ccreated%7Cdesc">ONS Postcode Directory</a> and add a new column for just the outcode and save as a new file</li>
+<li>Load the CSV into QGIS and run <a href="https://docs.qgis.org/3.34/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#mean-coordinate-s"><em>mean coordinates</em></a> grouped by outcode area — this gives the geographic centre of all the postcodes with the same outcode</li>
+<li>Join this layer to the pivot table and set the symbol size to reflect the number of users</li>
+</ul>
+<p>As an extra step, I ran a spatial join between the user locations and the Welsh health board boundaries — this step wasn’t needed to visualise the data, but meant I could add a summary table to the final product showing the number (sum) of users in each health board area.</p>
+<h1 id="gis-training">GIS training</h1>
+<p>We ran a three-part introduction to QGIS training to test the IFRC GIS training platform that’s been in development since 2023. We had a group of 11 trainees from four countries with experience levels ranging from complete beginner to intermediate. The training was run over three half days and covered an introduction to GIS and QGIS, working with spatial data, creating map layouts and basic spatial data operations.</p>
+<p>The training went well and trainees said they were happy with the course, but we still learnt a lot about how we could improve the training structure and materials. The most obvious finding was that we need to rethink how much material it’s possible to cover in three half days — it was a bit of a squeeze to fit in everything we wanted. We’ll have a debrief next week to figure out how to finalise the materials.</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-16-health-boundaries-esri-dashboards-and-climate-risk-maps/">2024 ▸ 16 ▸ Health boundaries, ESRI dashboards and climate risk maps</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-05-22-fotokino-cartography-exhibition-marseille/">Cartography exhibition, Fotokino, Marseille</a></li>
+</ul>
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/2024-17-climate-risk-and-service-user-maps-gis-training/` was built on 2025-03-18T20:39:55.688Z -->
+		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
+	</body>
+</html>

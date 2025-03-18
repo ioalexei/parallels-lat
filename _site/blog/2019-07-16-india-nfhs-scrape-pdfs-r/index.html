@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Using R to scrape Indian health survey data from PDFs</title>
+		<meta name="description" content="Mostly maps">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Parallels">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+		<link rel="me" href="https://mapstodon.space/@alexei">
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">Parallels</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1 id="using-r-to-scrape-indian-health-survey-data-from-pdfs">Using R to scrape Indian health survey data from PDFs</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2019-07-16">16 July 2019</time></li>
+</ul>
+
+<h1 id="aim">Aim</h1>
+<p>I want to be able to create a map of district-level child malnutrition data for India. This data is available online at the <a href="http://rchiips.org/nfhs/index.shtml">National Family Health Survey website</a>, but unfortunately the data is only available in PDF form and the website is often offline. It would be useful to have the data in table format and stored locally so that it can be used in GIS software.</p>
+<p>If there were just a handful of data sheets to get data from, it would be easier to just copy the data by hand into a spreadsheet or add directly into GIS software. However, India has 33 states and over 600 districts, so clearly it would take too long to download each PDF and then copy out the data - I needed to find a way to automate this process.</p>
+<p>I wrote this script while learning R and trying to solve this particular problem. There was quite a lot of trial and error involved, and I didn't follow software engineering practices so the code could be improved. However, it works for what I needed and hopefully makes sense to you reading it. I've included footnotes for each section with links to the pages that helped me solve each step.</p>
+<h1 id="automating-the-process">Automating the process</h1>
+<h2 id="set-up">Set-up</h2>
+<p>To begin, let's load the necessary libraries.</p>
+<pre class="language-r" tabindex="0"><code class="language-r">library<span class="token punctuation">(</span>tidyverse<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>stringr<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>tabulizer<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>rvest<span class="token punctuation">)</span></code></pre>
+<h2 id="scrape-web-pages">Scrape web pages</h2>
+<p>The <a href="http://rchiips.org/nfhs/index.shtml">National Family Health Survey website</a> has a page for <a href="http://rchiips.org/nfhs/districtfactsheet_NFHS-4.shtml">district fact-sheets</a> for the 2015-16 survey that allows you to click through two sets of menus to get to the PDFs. First you select the state and then the district, which downloads the data sheet for that district.</p>
+<p>After experimenting with a couple of scraping packages, I found <code>rvest</code>, which seemed the most intuitive to use. This chunk reads the list on the main page and creates a list of the URLs for each state. [^1]</p>
+<pre class="language-r" tabindex="0"><code class="language-r">nfhs_site <span class="token operator">&lt;-</span> <span class="token string">"http://rchiips.org/nfhs/districtfactsheet_NFHS-4.shtml"</span>
+
+state_pages <span class="token operator">&lt;-</span> read_html<span class="token punctuation">(</span>nfhs_site<span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> 
+  html_nodes<span class="token punctuation">(</span><span class="token string">'select'</span><span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> 
+  map<span class="token punctuation">(</span><span class="token operator">~</span>html_nodes<span class="token punctuation">(</span>.x<span class="token punctuation">,</span> <span class="token string">'option'</span><span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> 
+        html_attr<span class="token punctuation">(</span><span class="token string">'value'</span><span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> 
+        gsub<span class="token punctuation">(</span>pattern <span class="token operator">=</span> <span class="token string">'\\t|\\r|\\n'</span><span class="token punctuation">,</span> replacement <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span>
+  
+base_url <span class="token operator">&lt;-</span> <span class="token string">"http://rchiips.org/nfhs/"</span>
+
+state_urls <span class="token operator">&lt;-</span> list<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token number">1</span><span class="token operator">:</span>length<span class="token punctuation">(</span>state_pages<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  url <span class="token operator">&lt;-</span> paste0<span class="token punctuation">(</span>base_url<span class="token punctuation">,</span> state_pages<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+  state_urls<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> url 
+<span class="token punctuation">}</span>
+
+unlist<span class="token punctuation">(</span>state_urls<span class="token punctuation">)</span> <span class="token comment"># flatten the list</span>
+state_urls <span class="token operator">&lt;-</span> state_urls<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token comment"># remove a blank entry</span></code></pre>
+<p>The process repeats for each of those pages to create a list of data sheet PDFs for every district in a state.</p>
+<pre class="language-r" tabindex="0"><code class="language-r">district_pdfs <span class="token operator">&lt;-</span> list<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> state_urls<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  district_pdfs<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> read_html<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> html_nodes<span class="token punctuation">(</span><span class="token string">'option'</span><span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> html_attr<span class="token punctuation">(</span><span class="token string">'value'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="download-pdfs">Download PDFs</h2>
+<p>Now that I have a URL for every PDF, I can loop through and download them. To keep things tidy, I extracted the two-letter state code from the URL and made a folder using the code that I can save the PDFs for that state into. [^2] [^3] When I first tried this the PDFs downloaded as blank files. Adding the <code>mode=&quot;wb&quot;</code> flag to <code>download.file</code> fixed this. [^4]</p>
+<pre class="language-r" tabindex="0"><code class="language-r">ifelse<span class="token punctuation">(</span><span class="token operator">!</span>dir.exists<span class="token punctuation">(</span><span class="token string">"data"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dir.create<span class="token punctuation">(</span><span class="token string">"data"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># check if data directory exists, if not create it. </span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> district_pdfs<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">#do any filtering of states here - it can take a long time!</span>
+  d_code <span class="token operator">&lt;-</span> str_sub<span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> start <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">)</span>
+  
+  dir.create<span class="token punctuation">(</span>file.path<span class="token punctuation">(</span>paste0<span class="token punctuation">(</span><span class="token string">"data/"</span><span class="token punctuation">,</span> d_code<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> recursive<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>p <span class="token keyword">in</span> i<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    download.file<span class="token punctuation">(</span>paste0<span class="token punctuation">(</span><span class="token string">"http://rchiips.org/nfhs/"</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">,</span> paste0<span class="token punctuation">(</span><span class="token string">"data/"</span><span class="token punctuation">,</span> d_code<span class="token punctuation">,</span> <span class="token string">"/"</span><span class="token punctuation">,</span> str_sub<span class="token punctuation">(</span>p<span class="token punctuation">,</span> start <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>mode<span class="token operator">=</span><span class="token string">"wb"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="extract-data-from-pdfs">Extract data from PDFs</h2>
+<p>The next step is to extract the data from the PDFs. As with scraping, I found a number of methods for reading table data from PDFs in R. The package I found most straighforward was <code>tabulizer</code>. [^5]</p>
+<p>Now I can loop through each directory and process each PDF. [^6] Luckily, each PDF is in the same format and the data I want is on the same page in all of the files. This allowed me to set a single page to extract with <code>pages = 4</code> (only extract from page 4) which cuts down on processing time and avoids some extra steps of searching and extracting the right pages afterwards.</p>
+<p>First, I extract the data from page 4 of the PDF and convert it to a data.frame.</p>
+<pre class="language-r" tabindex="0"><code class="language-r">files <span class="token operator">&lt;-</span> list<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#  reset from previous run </span>
+files <span class="token operator">&lt;-</span> list.files<span class="token punctuation">(</span><span class="token string">"data/"</span><span class="token punctuation">,</span> pattern<span class="token operator">=</span><span class="token string">".pdf"</span><span class="token punctuation">,</span> recursive<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">,</span> full.names<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">)</span> <span class="token comment"># if you don't want to run for all states, change the directory here</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span>f <span class="token keyword">in</span> files<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  df_results <span class="token operator">&lt;-</span> extract_tables<span class="token punctuation">(</span>f<span class="token punctuation">,</span> pages <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span>
+  df2 <span class="token operator">&lt;-</span> data.frame<span class="token punctuation">(</span>df_results<span class="token punctuation">)</span></code></pre>
+<p>Then, I do some tidying: fix the column names and remove some unneeded rows at the top. [^7]</p>
+<pre class="language-r" tabindex="0"><code class="language-r">  x1 <span class="token operator">&lt;-</span> df_results<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+  x2 <span class="token operator">&lt;-</span> df_results<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
+  colnames<span class="token punctuation">(</span>df2<span class="token punctuation">)</span> <span class="token operator">&lt;-</span> c<span class="token punctuation">(</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">)</span>
+  df2 <span class="token operator">&lt;-</span> df2<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">]</span>
+  df2 <span class="token operator">&lt;-</span> df2<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">]</span></code></pre>
+<p>The data.frame is still a bit messy, but rather than spending lots of time tidying up formatting for rows I don't need to use, I decided to just extract the rows with the data I need. The survey questions relating to child malnutrition rates are numbers 68--71. As the question numbers are included in the data frame, I can run a text search for those numbers and pull them out into a new variable <code>q67_71</code>. [^9]</p>
+<pre class="language-r" tabindex="0"><code class="language-r">  q68_71 <span class="token operator">&lt;-</span> df2 <span class="token percent-operator operator">%>%</span> filter<span class="token punctuation">(</span>str_detect<span class="token punctuation">(</span>Indicators<span class="token punctuation">,</span> <span class="token string">"68."</span><span class="token punctuation">)</span><span class="token operator">|</span>str_detect<span class="token punctuation">(</span>Indicators<span class="token punctuation">,</span> <span class="token string">"69."</span><span class="token punctuation">)</span><span class="token operator">|</span>str_detect<span class="token punctuation">(</span>Indicators<span class="token punctuation">,</span> <span class="token string">"70."</span><span class="token punctuation">)</span><span class="token operator">|</span>str_detect<span class="token punctuation">(</span>Indicators<span class="token punctuation">,</span> <span class="token string">"71."</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>At this stage I realised the PDFs are not quite all formatted the same. For districts that are only urban or rural, two columns are provided, <code>Urban</code>/<code>Rural</code> and <code>Total</code> but for districts that are both urban and rural, three columns are provided: <code>Urban</code>, <code>Rural</code> and <code>Total</code>. The PDF extraction bundles all of these into a single column, which I need to split apart.</p>
+<p>First, I use <code>if</code> statements to check the column name to see which category it falls into. For each option, I set a flag and then in the next chunk process the columns depending on which flag is set.</p>
+<pre class="language-r" tabindex="0"><code class="language-r">  <span class="token comment"># if cols are rural and total, set flag </span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>q68_71<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Rural Total"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>RT <span class="token operator">&lt;-</span>  <span class="token boolean">TRUE</span><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>RT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span><span class="token punctuation">}</span>
+  
+  <span class="token comment"># if cols are urban and total, set flag </span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>q68_71<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Urban Total"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>UT <span class="token operator">&lt;-</span> <span class="token boolean">TRUE</span><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>UT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span><span class="token punctuation">}</span>
+  
+  <span class="token comment"># if cols are urban, rural and total, set flag </span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>q68_71<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Urban Rural Total"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>URT <span class="token operator">&lt;-</span> <span class="token boolean">TRUE</span><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>URT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span><span class="token punctuation">}</span></code></pre>
+<p>Now I can split the second column on the space character (<code>&quot; &quot;</code>) and insert the new columns into the data frame before removing the redundant data in the combined column.</p>
+<pre class="language-r" tabindex="0"><code class="language-r">  <span class="token comment"># split columns and rename depending on flag  </span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>RT <span class="token operator">==</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Rural"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Rural Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token comment"># insert split column into data.frame</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Rural Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Rural Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> <span class="token keyword">NULL</span>    <span class="token comment"># remove original column </span>
+    RT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span>                   <span class="token comment"># reset the flag </span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>UT <span class="token operator">==</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Urban"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Urban Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Urban Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Urban Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> <span class="token keyword">NULL</span> 
+    UT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>URT <span class="token operator">==</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Urban"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Urban Rural Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Rural"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Urban Rural Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Urban Rural Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Urban Rural Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> <span class="token keyword">NULL</span>
+    URT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span>
+  <span class="token punctuation">}</span></code></pre>
+<h2 id="export-as-csv">Export as csv</h2>
+<p>Now that I've got the data I need for this district, I'll write it out to CSV using <code>write_csv</code> (NB not <code>write.csv</code>).[^8] The code picks out the two-letter state code from the file path and saves the CSV into that folder with the state code, district code and district name.</p>
+<pre class="language-r" tabindex="0"><code class="language-r">  write_csv<span class="token punctuation">(</span>q68_71<span class="token punctuation">,</span> path <span class="token operator">=</span> file.path<span class="token punctuation">(</span>paste0<span class="token punctuation">(</span><span class="token string">"data/"</span><span class="token punctuation">,</span> str_sub<span class="token punctuation">(</span>f<span class="token punctuation">,</span> start <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">,</span> end <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"/"</span><span class="token punctuation">,</span> 
+  <span class="token operator">+</span> str_sub<span class="token punctuation">(</span>f<span class="token punctuation">,</span> start <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">,</span> end <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">".csv"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> append <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">,</span> col_names <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span></code></pre>
+<p>The loop then continues through all the PDFs in each folder in my data directory.</p>
+<p>While I've chosen to look specifically at the data on child malnutrition, it would be very easy to edit the script to pull out data for other questions by changing the search string that identifies the questions (or the page that gets extracted from the PDF).</p>
+<p>It would probably be better to get all of the data into a single file, but for now it's good enough to just have it extracted and waiting to be joined to district geographies. This next step will be the subject of another post.</p>
+<h1 id="full-script">Full script</h1>
+<pre class="language-r" tabindex="0"><code class="language-r">library<span class="token punctuation">(</span>tidyverse<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>stringr<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>tabulizer<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>rvest<span class="token punctuation">)</span>
+
+nfhs_site <span class="token operator">&lt;-</span> <span class="token string">"http://rchiips.org/nfhs/districtfactsheet_NFHS-4.shtml"</span>
+
+state_pages <span class="token operator">&lt;-</span> read_html<span class="token punctuation">(</span>nfhs_site<span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> 
+  html_nodes<span class="token punctuation">(</span><span class="token string">'select'</span><span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> 
+  map<span class="token punctuation">(</span><span class="token operator">~</span>html_nodes<span class="token punctuation">(</span>.x<span class="token punctuation">,</span> <span class="token string">'option'</span><span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> 
+        html_attr<span class="token punctuation">(</span><span class="token string">'value'</span><span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> 
+        gsub<span class="token punctuation">(</span>pattern <span class="token operator">=</span> <span class="token string">'\\t|\\r|\\n'</span><span class="token punctuation">,</span> replacement <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span>
+  
+base_url <span class="token operator">&lt;-</span> <span class="token string">"http://rchiips.org/nfhs/"</span>
+
+state_urls <span class="token operator">&lt;-</span> list<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token number">1</span><span class="token operator">:</span>length<span class="token punctuation">(</span>state_pages<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  url <span class="token operator">&lt;-</span> paste0<span class="token punctuation">(</span>base_url<span class="token punctuation">,</span> state_pages<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+  state_urls<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> url 
+<span class="token punctuation">}</span>
+
+unlist<span class="token punctuation">(</span>state_urls<span class="token punctuation">)</span> <span class="token comment"># flatten the list</span>
+state_urls <span class="token operator">&lt;-</span> state_urls<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token comment"># remove a blank entry</span>
+
+district_pdfs <span class="token operator">&lt;-</span> list<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> state_urls<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  district_pdfs<span class="token punctuation">[</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> read_html<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> html_nodes<span class="token punctuation">(</span><span class="token string">'option'</span><span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> html_attr<span class="token punctuation">(</span><span class="token string">'value'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+ifelse<span class="token punctuation">(</span><span class="token operator">!</span>dir.exists<span class="token punctuation">(</span><span class="token string">"data"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dir.create<span class="token punctuation">(</span><span class="token string">"data"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># check if data directory exists, if not create it. </span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> district_pdfs<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">#do any filtering of states here - it can take a long time!</span>
+  d_code <span class="token operator">&lt;-</span> str_sub<span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> start <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">)</span>
+  
+  dir.create<span class="token punctuation">(</span>file.path<span class="token punctuation">(</span>paste0<span class="token punctuation">(</span><span class="token string">"data/"</span><span class="token punctuation">,</span> d_code<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> recursive<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>p <span class="token keyword">in</span> i<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    download.file<span class="token punctuation">(</span>paste0<span class="token punctuation">(</span><span class="token string">"http://rchiips.org/nfhs/"</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">,</span> paste0<span class="token punctuation">(</span><span class="token string">"data/"</span><span class="token punctuation">,</span> d_code<span class="token punctuation">,</span> <span class="token string">"/"</span><span class="token punctuation">,</span> str_sub<span class="token punctuation">(</span>p<span class="token punctuation">,</span> start <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>mode<span class="token operator">=</span><span class="token string">"wb"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+files <span class="token operator">&lt;-</span> list<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#  reset from previous run </span>
+files <span class="token operator">&lt;-</span> list.files<span class="token punctuation">(</span><span class="token string">"data/"</span><span class="token punctuation">,</span> pattern<span class="token operator">=</span><span class="token string">".pdf"</span><span class="token punctuation">,</span> recursive<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">,</span> full.names<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">)</span> <span class="token comment"># if you don't want to run for all states, change the directory here</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span>f <span class="token keyword">in</span> files<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  df_results <span class="token operator">&lt;-</span> extract_tables<span class="token punctuation">(</span>f<span class="token punctuation">,</span> pages <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span>
+  df2 <span class="token operator">&lt;-</span> data.frame<span class="token punctuation">(</span>df_results<span class="token punctuation">)</span>
+  
+  x1 <span class="token operator">&lt;-</span> df_results<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+  x2 <span class="token operator">&lt;-</span> df_results<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
+  colnames<span class="token punctuation">(</span>df2<span class="token punctuation">)</span> <span class="token operator">&lt;-</span> c<span class="token punctuation">(</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">)</span>
+  df2 <span class="token operator">&lt;-</span> df2<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">]</span>
+  df2 <span class="token operator">&lt;-</span> df2<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">]</span>
+  
+  q68_71 <span class="token operator">&lt;-</span> df2 <span class="token percent-operator operator">%>%</span> filter<span class="token punctuation">(</span>str_detect<span class="token punctuation">(</span>Indicators<span class="token punctuation">,</span> <span class="token string">"68."</span><span class="token punctuation">)</span><span class="token operator">|</span>str_detect<span class="token punctuation">(</span>Indicators<span class="token punctuation">,</span> <span class="token string">"69."</span><span class="token punctuation">)</span><span class="token operator">|</span>str_detect<span class="token punctuation">(</span>Indicators<span class="token punctuation">,</span> <span class="token string">"70."</span><span class="token punctuation">)</span><span class="token operator">|</span>str_detect<span class="token punctuation">(</span>Indicators<span class="token punctuation">,</span> <span class="token string">"71."</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  
+    <span class="token comment"># if cols are rural and total, set flag </span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>q68_71<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Rural Total"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>RT <span class="token operator">&lt;-</span>  <span class="token boolean">TRUE</span><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>RT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span><span class="token punctuation">}</span>
+  
+  <span class="token comment"># if cols are urban and total, set flag </span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>q68_71<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Urban Total"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>UT <span class="token operator">&lt;-</span> <span class="token boolean">TRUE</span><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>UT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span><span class="token punctuation">}</span>
+  
+  <span class="token comment"># if cols are urban, rural and total, set flag </span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>q68_71<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Urban Rural Total"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>URT <span class="token operator">&lt;-</span> <span class="token boolean">TRUE</span><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>URT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span><span class="token punctuation">}</span>
+
+  <span class="token comment"># split columns and rename depending on flag  </span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>RT <span class="token operator">==</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Rural"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Rural Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token comment"># insert split column into data.frame</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Rural Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Rural Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> <span class="token keyword">NULL</span>    <span class="token comment"># remove original column </span>
+    RT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span>                   <span class="token comment"># reset the flag </span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>UT <span class="token operator">==</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Urban"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Urban Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Urban Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Urban Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> <span class="token keyword">NULL</span> 
+    UT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>URT <span class="token operator">==</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Urban"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Urban Rural Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Rural"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Urban Rural Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> str_split_fixed<span class="token punctuation">(</span>q68_71<span class="token operator">$</span>`Urban Rural Total`<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span>
+    q68_71<span class="token punctuation">[</span><span class="token string">"Urban Rural Total"</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> <span class="token keyword">NULL</span>
+    URT <span class="token operator">&lt;-</span> <span class="token boolean">FALSE</span>
+  <span class="token punctuation">}</span>
+    write_csv<span class="token punctuation">(</span>q68_71<span class="token punctuation">,</span> path <span class="token operator">=</span> file.path<span class="token punctuation">(</span>paste0<span class="token punctuation">(</span><span class="token string">"data/"</span><span class="token punctuation">,</span> str_sub<span class="token punctuation">(</span>f<span class="token punctuation">,</span> start <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">,</span> end <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"/"</span><span class="token punctuation">,</span> str_sub<span class="token punctuation">(</span>f<span class="token punctuation">,</span> start <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">,</span> end <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">".csv"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> append <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">,</span> col_names <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span></code></pre>
+<h1 id="footnotes">Footnotes</h1>
+<p>[^1]:  <a href="https://github.com/tidyverse/rvest">Tidyverse: rvest</a> //  <a href="https://stackoverflow.com/questions/53679009/scrape-and-loop-with-rvest">Stack Overflow: Scrape and loop with Rvest</a> // <a href="https://stackoverflow.com/questions/42259300/how-to-read-an-html-list-from-a-webpage-into-r">Stack Overflow: How to read an HTML list from a webpage into R</a>
+[^2]:  <a href="http://rfunction.com/archives/2432">Function of the day: dir.create</a>,  <a href="https://www.masterdataanalysis.com/r/working-with-files-and-folders-in-r/">Master Data Analysis: Working with files and folders in R</a>
+[^3]:  <a href="https://stackoverflow.com/questions/21091202/how-to-index-an-element-of-a-list-object-in-r">Stack Overflow: How to index an element of a list object in R</a> // <a href="https://stackoverflow.com/questions/7201341/how-can-two-strings-be-concatenated">Stack Overflow: How can two strings be concatenated?</a> // <a href="https://stackoverflow.com/questions/23413331/how-to-remove-last-n-characters-from-every-element-in-the-r-vector">Stack Overflow: How to remove last n characters from every element in the R vector</a>
+[^4]:  <a href="https://stackoverflow.com/questions/9280243/problems-with-downloading-pdf-file-using-r">Stack Overflow: Problems with Downloading pdf file using R</a>
+[^5]:  <a href="https://cran.r-project.org/web/packages/tabulizer/readme/README.html">tabulizer: Extract Tables from PDFs</a> // <a href="https://cran.r-project.org/web/packages/tabulizer/vignettes/tabulizer.html">Introduction to tabulizer</a> // <a href="https://ropensci.org/tutorials/tabulizer_tutorial/">ROpenSci: Tabulizer tutorial</a>
+[^6]:  <a href="https://stackoverflow.com/questions/18751361/how-to-loop-over-files-in-different-directories">Stack Overflow: How to loop over files in different directories</a>
+[^7]:  <a href="https://stackoverflow.com/questions/20956119/assign-headers-based-on-existing-row-in-dataframe-in-r">Stack Overflow: Assign headers based on existing row in dataframe in R</a>
+[^8]:  <a href="https://readr.tidyverse.org/reference/write_delim.html">Tidyverse: Write a data frame to a delimited file</a>
+[^9]:  <a href="https://sebastiansauer.github.io/dplyr_filter/">Sebastian Sauer: Some tricks on dplyr::filter</a> // <a href="https://stackoverflow.com/questions/22850026/filtering-row-which-contains-a-certain-string-using-dplyr">Stack OVerflow: Filtering row which contains a certain string using dplyr</a></p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2019-07-16-india-nfhs-map-child-malnutrition/">Using R to map child malnutrition in India</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2020-02-28-congo-peatland-oil-exploration/">Maps for report on oil exploration in Congo peatlands</a></li>
+</ul>
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/2019-07-16-india-nfhs-scrape-pdfs-r/` was built on 2025-03-18T20:39:55.675Z -->
+		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
+	</body>
+</html>

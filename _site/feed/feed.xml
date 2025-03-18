@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Parallels</title>
+  <subtitle></subtitle>
+  <link href="https://parallels.lat/feed/feed.xml" rel="self" />
+  <link href="https://parallels.lat/" />
+  <updated>2025-03-18T20:24:00Z</updated>
+  <id>https://parallels.lat/</id>
+  <author>
+    <name>Alexei</name>
+  </author>
+  <entry>
+    <title>Is it in London?</title>
+    <link href="https://parallels.lat/blog/2025-03-18-is-it-in-london/" />
+    <updated>2025-03-18T20:24:00Z</updated>
+    <id>https://parallels.lat/blog/2025-03-18-is-it-in-london/</id>
+    <content type="html">&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2025-03-18-is-it-in-london/PlDM3V_pXm-723.avif 723w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2025-03-18-is-it-in-london/PlDM3V_pXm-723.webp 723w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2025-03-18-is-it-in-london/PlDM3V_pXm-723.png&quot; alt=&quot;Is it in London webmap&quot; width=&quot;723&quot; height=&quot;491&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://andrewl.github.io/30-day-map-challenge-2024/13-a-new-tool.html&quot;&gt;Is it in London?&lt;/a&gt;
+A fun webmap Andrew Larcombe made for 30daymapchallenge 2024 - it shows places
+that are within the M25 but not in a London borough. Everything inside the GLA
+and outside the M25 is masked out.&lt;/p&gt;
+&lt;p&gt;It&#39;s made in R and published with Leaflet.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>NTS King Tubby mix</title>
+    <link href="https://parallels.lat/blog/2025-02-21-nts-king-tubbys-dub-lessons/" />
+    <updated>2025-01-02T17:51:00Z</updated>
+    <id>https://parallels.lat/blog/2025-02-21-nts-king-tubbys-dub-lessons/</id>
+    <content type="html">&lt;p&gt;Cracking 60 min King Tubby mix on NTS from back in December:
+&lt;a href=&quot;https://www.nts.live/shows/your-specialist-subject/episodes/your-specialist-subject-groundselector---king-tubby-s-dub-lessons-31st-december-2024&quot;&gt;King Tubby&#39;s Dub Lessons w/ groundselector&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Kyle in Target Parking Lot</title>
+    <link href="https://parallels.lat/blog/2024-08-15-kyle-in-target-parking-lot/" />
+    <updated>2024-08-15T00:00:00Z</updated>
+    <id>https://parallels.lat/blog/2024-08-15-kyle-in-target-parking-lot/</id>
+    <content type="html">&lt;p&gt;I came across this photo by Caroline Drake in an issue of Aperture in 2021 and it will pop into my head every couple of months. Probably with about the same frequency that I see a map of Idaho online.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2024-08-15-kyle-in-target-parking-lot/YrCEf56VJR-608.avif 608w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2024-08-15-kyle-in-target-parking-lot/YrCEf56VJR-608.webp 608w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2024-08-15-kyle-in-target-parking-lot/YrCEf56VJR-608.jpeg&quot; alt=&quot;Kyle in Target Parking Lot by Caroline Drake&quot; width=&quot;608&quot; height=&quot;790&quot;&gt;&lt;/picture&gt;
+&lt;em&gt;&lt;a href=&quot;https://aperture.org/prints/kyle-in-target-parking-lot-twin-falls-idaho-2016/&quot;&gt;Kyle in Target Parking Lot by Caroline Drake&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;As a side note, if you&#39;re in the UK you can read Aperture for free using the &lt;a href=&quot;https://libbyapp.com&quot;&gt;Libby library app&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Cartography / Typography #1</title>
+    <link href="https://parallels.lat/blog/2024-08-14-cartography-typography-1/" />
+    <updated>2024-08-14T00:00:00Z</updated>
+    <id>https://parallels.lat/blog/2024-08-14-cartography-typography-1/</id>
+    <content type="html">&lt;p&gt;While doing some research on tyopgraphy in mapping, I found this table of cartographic lettering conventions on &lt;a href=&quot;https://www.drjill.net&quot;&gt;Jill Saligoe-Simmel&#39;s website&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2024-08-14-cartography-typography-1/3ar3cx-IP7-523.avif 523w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2024-08-14-cartography-typography-1/3ar3cx-IP7-523.webp 523w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2024-08-14-cartography-typography-1/3ar3cx-IP7-523.png&quot; alt=&quot;Cartographic Lettering Conventions&quot; width=&quot;523&quot; height=&quot;705&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Source: &lt;a href=&quot;https://www.drjill.net/map-fonts-article-1-the-basics-of-typography-for-cartography/&quot;&gt;Using Text on Maps: Typography in Cartography&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I&#39;d love to read the context that goes with the table; it&#39;s taken from the Guild Handbook of Scientific Illustration, which is available on Archive.org but restricted to the US.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>2024 ▸ 23 ▸ Postcode area centres, API documentation, travel time to events</title>
+    <link href="https://parallels.lat/blog/2024-23-postcode-area-centres-api-documentation-travel-time-to-events/" />
+    <updated>2024-07-11T00:00:00Z</updated>
+    <id>https://parallels.lat/blog/2024-23-postcode-area-centres-api-documentation-travel-time-to-events/</id>
+    <content type="html">&lt;p&gt;I’ve missed a few weeks of weeknotes, so bundling a few weeks together for a roundup of the top three things things I’ve worked on in May and June.&lt;/p&gt;
+&lt;h2 id=&quot;postcode-area-mean-centres&quot;&gt;Postcode area mean centres&lt;/h2&gt;
+&lt;p&gt;Based on a few &lt;a href=&quot;https://medium.com/open-working-reuse/2024-17-climate-risk-and-service-user-maps-gis-training-35a654f3f50e&quot;&gt;recent requests&lt;/a&gt; around mapping postcode areas, I made a dataset that shows the geographic centre of each postcode area, that is all postcodes sharing the same outcode. The outcode is the part of a UK postcode that comes before the space — i.e. for W1A 1AA, the outcode would be W1A.&lt;/p&gt;
+&lt;p&gt;I made the dataset with Python by using the &lt;a href=&quot;https://geoportal.statistics.gov.uk/datasets/521edce4159a451a932539b7fc786322/about&quot;&gt;ONS Postcode Directory&lt;/a&gt;, following these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the postcode directory in pandas (to speed up processing I just used the postcode, lat and long columns)&lt;/li&gt;
+&lt;li&gt;Remove non-geographic postcodes (in the ONSPD these are given a coordinate location of &lt;code&gt;0.0, 99.9&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Create a new column for the postcode area (select the postcode text before the space)&lt;/li&gt;
+&lt;li&gt;Using Pandas, group by the postcode area and aggregate the lat and long columns by taking the mean of the values&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2024-23-postcode-area-centres-api-documentation-travel-time-to-events/yU1s4GG-dz-625.avif 625w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2024-23-postcode-area-centres-api-documentation-travel-time-to-events/yU1s4GG-dz-625.webp 625w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2024-23-postcode-area-centres-api-documentation-travel-time-to-events/yU1s4GG-dz-625.png&quot; alt=&quot;Sample image of mean centres for UK postcode areas&quot; width=&quot;625&quot; height=&quot;457&quot;&gt;&lt;/picture&gt;
+&lt;em&gt;Sample image of mean centres for UK postcode areas&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The ONSPD is released under the &lt;a href=&quot;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&quot;&gt;Open Government License&lt;/a&gt;, which means we can make this adaptation available for other people to use as well — so it’s hosted on &lt;a href=&quot;https://britishredcross.maps.arcgis.com/home/item.html?id=c65598ef0b1a476189b11eb7a3e3c8b8#overview&quot;&gt;ArcGIS Online.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The next step will be to generate corresponding polygons (using the same method I outlined &lt;a href=&quot;https://medium.com/open-working-reuse/2024-09-weeknote-7dbafdb0a8ba&quot;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id=&quot;documenting-deployments-api&quot;&gt;Documenting deployments API&lt;/h2&gt;
+&lt;p&gt;BRC uses an online platform to manage personnel for deployments from our surge teams and registers. To make it easier to use data from the platform in internal reporting, I’ve been documenting the API that sits behind the web interface (with the permission of the developers) and building a simple Python script that colleagues can use to refresh the data when they need to. Some other Red Cross organisations use the same software, and I’ve had helpful support from them to get started.&lt;/p&gt;
+&lt;h2 id=&quot;travel-time-from-event-venue-analysis&quot;&gt;Travel time from event venue analysis&lt;/h2&gt;
+&lt;p&gt;I’ve started a new task to build a tool that can help our marketing team identify supporters close to events BRC is organising. The team would like to be able to message supporters living within a certain driving distance from an event venue. Building a tool that can base geographic targetting based on travel times rather than a simple distance buffer wil hopefully mean we can target communications to the people they are most relevant to. I’ll be prototyping this in the coming weeks and will write up a longer post when I’ve got a working product.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>HDX launched data access API</title>
+    <link href="https://parallels.lat/blog/2024-07-04-hdx-launched-data-access-api/" />
+    <updated>2024-07-04T00:00:00Z</updated>
+    <id>https://parallels.lat/blog/2024-07-04-hdx-launched-data-access-api/</id>
+    <content type="html">&lt;p&gt;The Humanitarian Data Exchange (HDX) &lt;a href=&quot;https://centre.humdata.org/announcing-the-hdx-humanitarian-api/&quot;&gt;has launched&lt;/a&gt; a data access API.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Although HDX has an existing API for the data catalogue (through
+CKAN), it only supports interaction with metadata. HDX HAPI enables
+direct access to the data itself.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I can see this being really useful for automating the way our team provides data to colleagues - we can now make sure we always have the most recent data in our ArcGIS online.&lt;/p&gt;
+&lt;p&gt;More info on the landing page: https://data.humdata.org/hapi&lt;/p&gt;
+&lt;p&gt;Launched at the same time, &lt;a href=&quot;https://data.humdata.org/signals&quot;&gt;HDX Signals&lt;/a&gt; also looks cool - automated messages when a significant change is detected in a dataset update.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>2024 ▸ 20 ▸Green View, the Art of Training and data gardening</title>
+    <link href="https://parallels.lat/blog/2024-20-green-view-the-art-of-training-and-data-gardening/" />
+    <updated>2024-06-10T00:00:00Z</updated>
+    <id>https://parallels.lat/blog/2024-20-green-view-the-art-of-training-and-data-gardening/</id>
+    <content type="html">&lt;h1 id=&quot;street-view-green-view&quot;&gt;Street View Green View&lt;/h1&gt;
+&lt;p&gt;In March, I contributed to &lt;a href=&quot;https://github.com/AmericanRedCross/street-view-green-view&quot;&gt;Street View Green View&lt;/a&gt;, an American Red Cross project that classifies an area by the amount of greenery visible in Street View imagery. This week, I worked on some code to process the green index scores generated by package so they can be displayed on a webmap.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2024-20-green-view-the-art-of-training-and-data-gardening/bmyb6t46D1-657.avif 657w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2024-20-green-view-the-art-of-training-and-data-gardening/bmyb6t46D1-657.webp 657w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2024-20-green-view-the-art-of-training-and-data-gardening/bmyb6t46D1-657.png&quot; alt=&quot;Screenshot of MapLibre webmap showing summary of Green Index scores&quot; width=&quot;657&quot; height=&quot;508&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Screenshot of MapLibre webmap showing summary of Green Index scores.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I used a &lt;a href=&quot;https://h3geo.org/docs/&quot;&gt;h3 hex grid&lt;/a&gt; to summarise the data, and &lt;a href=&quot;https://maplibre.org/&quot;&gt;MapLibre&lt;/a&gt; for the interactive webmapping. While h3 has a Python package (&lt;a href=&quot;https://pypi.org/project/h3/&quot;&gt;&lt;code&gt;h3&lt;/code&gt;&lt;/a&gt;), I used the &lt;a href=&quot;https://h3-pandas.readthedocs.io/en/latest/index.html&quot;&gt;&lt;code&gt;h3-geopandas&lt;/code&gt;&lt;/a&gt; package, which makes it just that bit easier to pass data to and from geodataframes.&lt;/p&gt;
+&lt;p&gt;Webmapping relies a lot on JavaScript, and MapLibre is no different. While I know the basics, I’m not an expert, so I relied on Python to set up variables and then passed them into the HTML doc via the Jinja templating engine. This turned out to be a great shortcut — I got the same end effect but didn’t have to spend a lot of time learning new bits of JS.&lt;/p&gt;
+&lt;h1 id=&quot;ifrc-art-of-training-course&quot;&gt;IFRC Art of Training course&lt;/h1&gt;
+&lt;p&gt;As part of my effort to better understand best practices in facilitating training, I took IFRC’s &lt;a href=&quot;https://ifrc.csod.com/ui/lms-learning-details/app/curriculum/0c965aa5-4eec-434b-96f8-9eeb7df03534&quot;&gt;Art of Training&lt;/a&gt; online course. It has four 40 minute modules on facilitation, mentoring and assessment. The bits on mentoring were less relevant to me, but I found the sections on training design and facilitation really helpful.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2024-20-green-view-the-art-of-training-and-data-gardening/uo6hj9FyOs-704.avif 704w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2024-20-green-view-the-art-of-training-and-data-gardening/uo6hj9FyOs-704.webp 704w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2024-20-green-view-the-art-of-training-and-data-gardening/uo6hj9FyOs-704.png&quot; alt=&quot;Screenshot of flyer for the IFRC’s Art of Training e-learning course.&quot; width=&quot;704&quot; height=&quot;401&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Screenshot of flyer for the IFRC’s Art of Training e-learning course. &lt;a href=&quot;https://surgelearning.ifrc.org/sites/default/files/media/document/2022-05/Surge%20Learning%20Team%20-%20The%20Art%20of%20Training%20Humanitarian%20Workers_1.pdf&quot;&gt;Source&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;h1 id=&quot;data-gardening&quot;&gt;Data gardening&lt;/h1&gt;
+&lt;p&gt;I spent some time ‘gardening’ some of the datasets we host for others in the organisation to use: adding new data where it’s available, fixing some minor errors, and deprioritising some data-related Jira tasks that have been on the backlog for a while (after talking to colleagues and finding out they’re no longer needed).&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Amnesty website open-sourced</title>
+    <link href="https://parallels.lat/blog/2024-05-31-amnesty-website-open-sourced/" />
+    <updated>2024-05-31T00:00:00Z</updated>
+    <id>https://parallels.lat/blog/2024-05-31-amnesty-website-open-sourced/</id>
+    <content type="html">&lt;p&gt;Amnesty has open sourced their website - Wordpress theme and plugins:
+https://github.com/amnestywebsite.&lt;/p&gt;
+&lt;p&gt;More charities and campaigning organisations should do this!&lt;/p&gt;
+&lt;p&gt;via &lt;a href=&quot;https://uk.linkedin.com/in/likeaword&quot;&gt;Ben Proctor on LinkedIn&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>NASA space shuttle orbit maps</title>
+    <link href="https://parallels.lat/blog/2024-05-30-space-shuttle-maps/" />
+    <updated>2024-05-30T00:00:00Z</updated>
+    <id>https://parallels.lat/blog/2024-05-30-space-shuttle-maps/</id>
+    <content type="html">&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2024-05-30-space-shuttle-maps/B4gN_Rg8TY-1899.avif 1899w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2024-05-30-space-shuttle-maps/B4gN_Rg8TY-1899.webp 1899w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2024-05-30-space-shuttle-maps/B4gN_Rg8TY-1899.jpeg&quot; alt=&quot;1982 shuttle orbits&quot; width=&quot;1899&quot; height=&quot;443&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;Two NASA maps of space shuttle orbits from 1982/3, from the David Rumsey collection:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.davidrumsey.com/ll/detailView.html?mid=RUMSEY~8~1~360398~90127559&amp;amp;manifestUrl=https%3A%2F%2Fwww.davidrumsey.com%2Fluna%2Fservlet%2Fiiif%2Fm%2FRUMSEY~8~1~360398~90127559%2Fmanifest&amp;amp;os=0&amp;amp;lc=RUMSEY~8~1&amp;amp;q=pub_list_no=13142.000&amp;amp;baseUrl=%2F%2Fwww.davidrumsey.com%2Fluna%2Fservlet%2Fas%2Fsearch&amp;amp;mediaType=Image#?c=0&amp;amp;m=0&amp;amp;s=0&amp;amp;cv=0&amp;amp;r=0&amp;amp;xywh=3302%2C945%2C15775%2C9727&quot;&gt;Space shuttle mission chart STS-9/SL-1. Front orbits 1-80&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.davidrumsey.com/ll/detailView.html?mid=RUMSEY~8~1~360396~90127556&amp;amp;manifestUrl=https%3A%2F%2Fwww.davidrumsey.com%2Fluna%2Fservlet%2Fiiif%2Fm%2FRUMSEY~8~1~360396~90127556%2Fmanifest&amp;amp;os=0&amp;amp;lc=RUMSEY~8~1&amp;amp;baseUrl=%2F%2Fwww.davidrumsey.com%2Fluna%2Fservlet%2Fas%2Fsearch&amp;amp;mediaType=Image#?c=0&amp;amp;m=0&amp;amp;s=0&amp;amp;cv=0&amp;amp;r=0&amp;amp;xywh=0%2C-3951%2C27123%2C14235&quot;&gt;Space shuttle mission chart STS-6. Front- orbits:1-48&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Detail:
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2024-05-30-space-shuttle-maps/yFVt50mIgd-584.avif 584w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2024-05-30-space-shuttle-maps/yFVt50mIgd-584.webp 584w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2024-05-30-space-shuttle-maps/yFVt50mIgd-584.png&quot; alt=&quot;1982 Shuttle orbits Americas detail&quot; width=&quot;584&quot; height=&quot;524&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2024-05-30-space-shuttle-maps/Cjdz5-GFcD-540.avif 540w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2024-05-30-space-shuttle-maps/Cjdz5-GFcD-540.webp 540w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2024-05-30-space-shuttle-maps/Cjdz5-GFcD-540.png&quot; alt=&quot;1982 Shuttle orbits Pacific detail&quot; width=&quot;540&quot; height=&quot;495&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Edit&lt;/em&gt;: I found a ton more in the DR achive at &lt;a href=&quot;https://www.davidrumsey.com/luna/servlet/view/search?q=author=%22Aerospace%20Center%20(U.S.)%22&quot;&gt;this link&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>2024 ▸ 18 ▸Training debrief, deprivation mapping and community gardening</title>
+    <link href="https://parallels.lat/blog/2024-18-training-debrief-deprivation-mapping-and-community-gardening/" />
+    <updated>2024-05-24T00:00:00Z</updated>
+    <id>https://parallels.lat/blog/2024-18-training-debrief-deprivation-mapping-and-community-gardening/</id>
+    <content type="html">&lt;h1 id=&quot;gis-training-debrief&quot;&gt;GIS training debrief&lt;/h1&gt;
+&lt;p&gt;Following the GIS training we ran last week, I had a debrief call with the other facilitators. We had good feedback from the trainees but also lots of input from us as facilitators on how to improve the training. We decided to take time to consolidate this feedback and implement a more robust project management structure to help us decide which changes to prioritise in the short term and which to leave for later.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2024-18-training-debrief-deprivation-mapping-and-community-gardening/q6KAls0nhZ-635.avif 635w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2024-18-training-debrief-deprivation-mapping-and-community-gardening/q6KAls0nhZ-635.webp 635w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2024-18-training-debrief-deprivation-mapping-and-community-gardening/q6KAls0nhZ-635.png&quot; alt=&quot;Screenshot of closed issues from the GIS training platform’s GitHub repo&quot; width=&quot;635&quot; height=&quot;323&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Screenshot of closed issues from the GIS training platform’s &lt;a href=&quot;https://github.com/GIScience/gis-training-resource-center&quot;&gt;GitHub repo&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;We decided to use GitHub’s &lt;a href=&quot;https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects&quot;&gt;project management features&lt;/a&gt; to keep track of this going ahead — it makes sense as we’re already publishing the material on GitHub. We had been managing issues and feedback in a series of Word and Excel docs on an external Sharepoint site, which was getting unwieldy.&lt;/p&gt;
+&lt;p&gt;I’ve been spending some time reading through the IFRC’s &lt;a href=&quot;https://surgelearning.ifrc.org/&quot;&gt;Surge Learning Toolbox&lt;/a&gt; that has lots of good advice on developing trainings; we’ve already met a lot of the good practice standards but there are also things we skipped to get an initial version available quickly. Now’s a good time to reflect on where there might be gaps we should go back and fill.&lt;/p&gt;
+&lt;h1 id=&quot;mapping-deprivation-across-health-boards&quot;&gt;Mapping deprivation across health boards&lt;/h1&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://parallels.lat/blog/2024-18-training-debrief-deprivation-mapping-and-community-gardening/8Z8j5qyjA2-612.avif 612w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://parallels.lat/blog/2024-18-training-debrief-deprivation-mapping-and-community-gardening/8Z8j5qyjA2-612.webp 612w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://parallels.lat/blog/2024-18-training-debrief-deprivation-mapping-and-community-gardening/8Z8j5qyjA2-612.png&quot; alt=&quot;Screenshot of deprivation index combined with health board boundaries&quot; width=&quot;612&quot; height=&quot;350&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Screenshot of deprivation index combined with health board boundaries. &lt;a href=&quot;https://experience.arcgis.com/experience/dc4cb15c3c154caf991783bfb8022925/page/Information/&quot;&gt;Source&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;At our team’s drop-in session this week we had a discussion with a colleague about how best to show health board boundaries alongside deprivation data in a PowerBI dashboard. After talking through the various options in PowerBI and their pros and cons, we decided to implement the map in ArcGIS Online instead. Because no internal data is involved, it was easier for us to use AGOL’s more flexible data integration options and make the map public than it would be to achieve something similar in PowerBI. A colleague combined the data and split it by region, to make it easier for teams to find the data that is most relevant to them. And because the map could be made public, users don’t need to have an ESRI license to access it.&lt;/p&gt;
+&lt;h1 id=&quot;community-of-practice-planning&quot;&gt;Community of Practice planning&lt;/h1&gt;
+&lt;p&gt;I spent Friday doing some ‘gardening’ on the geospatial and Python communities of practice I’m involved with. This involved lining up speakers for the next couple of months, sending out updates and sharing changes to scheduled events. I also spent a bit of time preparing possible questions and topics for an upcoming session of the Python user group where we don’t have a speaker — I expect people will have plenty of questions and topics to bring to the call, but it helps to have some prepared as backup just in case.&lt;/p&gt;
+</content>
+  </entry>
+</feed>

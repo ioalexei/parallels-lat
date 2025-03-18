@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>2024 ▸ 23 ▸ Postcode area centres, API documentation, travel time to events</title>
+		<meta name="description" content="Mostly maps">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Parallels">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+		<link rel="me" href="https://mapstodon.space/@alexei">
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">Parallels</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1 id="2024-23-postcode-area-centres-api-documentation-travel-time-to-events">2024 ▸ 23 ▸ Postcode area centres, API documentation, travel time to events</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2024-07-11">11 July 2024</time></li>
+</ul>
+
+<p>I’ve missed a few weeks of weeknotes, so bundling a few weeks together for a roundup of the top three things things I’ve worked on in May and June.</p>
+<h2 id="postcode-area-mean-centres">Postcode area mean centres</h2>
+<p>Based on a few <a href="https://medium.com/open-working-reuse/2024-17-climate-risk-and-service-user-maps-gis-training-35a654f3f50e">recent requests</a> around mapping postcode areas, I made a dataset that shows the geographic centre of each postcode area, that is all postcodes sharing the same outcode. The outcode is the part of a UK postcode that comes before the space — i.e. for W1A 1AA, the outcode would be W1A.</p>
+<p>I made the dataset with Python by using the <a href="https://geoportal.statistics.gov.uk/datasets/521edce4159a451a932539b7fc786322/about">ONS Postcode Directory</a>, following these steps:</p>
+<ol>
+<li>Open the postcode directory in pandas (to speed up processing I just used the postcode, lat and long columns)</li>
+<li>Remove non-geographic postcodes (in the ONSPD these are given a coordinate location of <code>0.0, 99.9</code>)</li>
+<li>Create a new column for the postcode area (select the postcode text before the space)</li>
+<li>Using Pandas, group by the postcode area and aggregate the lat and long columns by taking the mean of the values</li>
+</ol>
+<p><picture><source type="image/avif" srcset="/blog/2024-23-postcode-area-centres-api-documentation-travel-time-to-events/yU1s4GG-dz-625.avif 625w"><source type="image/webp" srcset="/blog/2024-23-postcode-area-centres-api-documentation-travel-time-to-events/yU1s4GG-dz-625.webp 625w"><img loading="lazy" decoding="async" src="/blog/2024-23-postcode-area-centres-api-documentation-travel-time-to-events/yU1s4GG-dz-625.png" alt="Sample image of mean centres for UK postcode areas" width="625" height="457"></picture>
+<em>Sample image of mean centres for UK postcode areas</em></p>
+<p>The ONSPD is released under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License</a>, which means we can make this adaptation available for other people to use as well — so it’s hosted on <a href="https://britishredcross.maps.arcgis.com/home/item.html?id=c65598ef0b1a476189b11eb7a3e3c8b8#overview">ArcGIS Online.</a></p>
+<p>The next step will be to generate corresponding polygons (using the same method I outlined <a href="https://medium.com/open-working-reuse/2024-09-weeknote-7dbafdb0a8ba">here</a>).</p>
+<h2 id="documenting-deployments-api">Documenting deployments API</h2>
+<p>BRC uses an online platform to manage personnel for deployments from our surge teams and registers. To make it easier to use data from the platform in internal reporting, I’ve been documenting the API that sits behind the web interface (with the permission of the developers) and building a simple Python script that colleagues can use to refresh the data when they need to. Some other Red Cross organisations use the same software, and I’ve had helpful support from them to get started.</p>
+<h2 id="travel-time-from-event-venue-analysis">Travel time from event venue analysis</h2>
+<p>I’ve started a new task to build a tool that can help our marketing team identify supporters close to events BRC is organising. The team would like to be able to message supporters living within a certain driving distance from an event venue. Building a tool that can base geographic targetting based on travel times rather than a simple distance buffer wil hopefully mean we can target communications to the people they are most relevant to. I’ll be prototyping this in the coming weeks and will write up a longer post when I’ve got a working product.</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-07-04-hdx-launched-data-access-api/">HDX launched data access API</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-08-14-cartography-typography-1/">Cartography / Typography #1</a></li>
+</ul>
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/2024-23-postcode-area-centres-api-documentation-travel-time-to-events/` was built on 2025-03-18T20:39:55.690Z -->
+		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
+	</body>
+</html>

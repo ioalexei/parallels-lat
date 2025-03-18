@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Using R to map child malnutrition in India</title>
+		<meta name="description" content="Mostly maps">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Parallels">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+		<link rel="me" href="https://mapstodon.space/@alexei">
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">Parallels</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1 id="using-r-to-map-child-malnutrition-in-india">Using R to map child malnutrition in India</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2019-07-16">16 July 2019</time></li>
+</ul>
+
+<p>In the previous post, I discussed a method for extracting district-level child malnutrition data from Indian government PDFs. This post will look at mapping that data.</p>
+<h2 id="data-sources">Data sources</h2>
+<p>As well as the extracted health survey data, I need a source of spatial data that has Indian district boundaries. My go to source for this would ordinarily be the Database of <a href="https://gadm.org/">Global Administrative Areas (GADM)</a>. While GADM does have district-level boundaries for India, the ID codes used as attributes are different to the census ID codes used in the file names for the survey data. The Natural Earth dataset has the same problem. Luckily, <a href="http://datameet.org">Datameet</a> has created an open dataset that solves this problem - it provides district boundaries with a census code attribute that I can match to the file names:</p>
+<p><a href="https://github.com/datameet/maps/tree/master/Districts/Census_2011">Datameet / Maps / Districts / Census_2011</a></p>
+<p>Note that the census boundary data is for 2011 while the health survey data is from 2015--16, so it's possible there have been changes to boundaries in between.</p>
+<h2 id="libraries">Libraries</h2>
+<p>First we'll load the libraries: <code>sf</code> to deal with spatial objects, <code>tidyverse</code> to subset data and <code>tmap</code> for mapping. I've tried out <code>plot</code> and <code>ggplot2</code> for mapping but find <code>tmap</code> to be more intuitive. [^1]</p>
+<pre class="language-r" tabindex="0"><code class="language-r">library<span class="token punctuation">(</span>sf<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>tidyverse<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>tmap<span class="token punctuation">)</span> </code></pre>
+<h2 id="joining-data">Joining data</h2>
+<p>First, I read in the district boundaries. Then I generate a list of the files to pull data from - note that here I've limited this to a single state, West Bengal, by only using that state's directory (<code>&quot;data/WB&quot;</code>).</p>
+<pre class="language-r" tabindex="0"><code class="language-r">sf <span class="token operator">&lt;-</span> st_read<span class="token punctuation">(</span><span class="token string">"geodata/Census_2011/2011_Dist.shp"</span><span class="token punctuation">)</span>
+
+files <span class="token operator">&lt;-</span> list<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+files <span class="token operator">&lt;-</span> list.files<span class="token punctuation">(</span><span class="token string">"data/WB"</span><span class="token punctuation">,</span> pattern<span class="token operator">=</span><span class="token string">".csv"</span><span class="token punctuation">,</span> recursive<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">,</span> full.names<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">)</span></code></pre>
+<p>After creating an empty <code>data.frame</code> to hold the extracted data, I set a loop to:</p>
+<ul>
+<li>Extract the district census ID from the file name</li>
+<li>Read the CSV file</li>
+<li>Pull out the measurements for each variable</li>
+<li>Add those columns to the data frame</li>
+</ul>
+<p>The last two steps could be combined into one, but I find that keeping them separate makes the steps easier to follow.</p>
+<p>When the loop is finished, I rename the columns to match the variables.</p>
+<pre class="language-r" tabindex="0"><code class="language-r">df <span class="token operator">&lt;-</span> data.frame<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span>f <span class="token keyword">in</span> files<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  df<span class="token punctuation">[</span>f<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> as.numeric<span class="token punctuation">(</span>str_split_fixed<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token string">"_"</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  x <span class="token operator">&lt;-</span> read.csv<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+  u5stunted <span class="token operator">&lt;-</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span>length<span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token comment"># accounts for some files having 3 columns, some 4</span>
+  u5wasted <span class="token operator">&lt;-</span> x<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span>length<span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+  u5sevwasted <span class="token operator">&lt;-</span> x<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span>length<span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+  u5underweight <span class="token operator">&lt;-</span> x<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span>length<span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+  df<span class="token punctuation">[</span>f<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> u5stunted
+  df<span class="token punctuation">[</span>f<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> u5wasted
+  df<span class="token punctuation">[</span>f<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> u5sevwasted
+  df<span class="token punctuation">[</span>f<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> u5underweight
+<span class="token punctuation">}</span>
+
+colnames<span class="token punctuation">(</span>df<span class="token punctuation">)</span> <span class="token operator">&lt;-</span> c<span class="token punctuation">(</span><span class="token string">"censuscode"</span><span class="token punctuation">,</span> <span class="token string">"u5stunted"</span><span class="token punctuation">,</span> <span class="token string">"u5wasted"</span><span class="token punctuation">,</span> <span class="token string">"u5sevwasted"</span><span class="token punctuation">,</span> <span class="token string">"u5underweight"</span><span class="token punctuation">)</span></code></pre>
+<p>Now that we have extracted the data and census codes, we can join the data frame to the spatial data on the census code attribute. The joining column needs to be of the same format, which is why in the chunk above the census code is transformed with <code>as.numeric</code>. Using <code>right_join</code> gives us just the West Bengal districts rather than all Indian districts.</p>
+<pre class="language-r" tabindex="0"><code class="language-r">wb_maln <span class="token operator">&lt;-</span> right_join<span class="token punctuation">(</span>sf<span class="token punctuation">,</span> df<span class="token punctuation">)</span></code></pre>
+<h2 id="mapping">Mapping</h2>
+<p>Then it's straightforward to map the data with <code>tmap</code>.</p>
+<pre class="language-r" tabindex="0"><code class="language-r">tm_shape<span class="token punctuation">(</span>wb_stunt<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_polygons<span class="token punctuation">(</span>col <span class="token operator">=</span> <span class="token string">"u5sevwasted"</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">"Severely wasted children %"</span><span class="token punctuation">,</span> palette <span class="token operator">=</span> <span class="token string">"Greens"</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_layout<span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"West Bengal"</span><span class="token punctuation">)</span></code></pre>
+<p><picture><source type="image/avif" srcset="/blog/2019-07-16-india-nfhs-map-child-malnutrition/C0nQzuZg5P-713.avif 713w"><source type="image/webp" srcset="/blog/2019-07-16-india-nfhs-map-child-malnutrition/C0nQzuZg5P-713.webp 713w"><img loading="lazy" decoding="async" src="/blog/2019-07-16-india-nfhs-map-child-malnutrition/C0nQzuZg5P-713.png" alt="wb_sevwasted.png" width="713" height="532"></picture></p>
+<p><code>tmap_arrange</code> also makes it fairly easy to plot multiple maps, so I can show the distribution of each of the vairables in a single image. <a href="https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/">This page</a> has a handy reference to the naming of colour schemes.</p>
+<pre class="language-r" tabindex="0"><code class="language-r">u5sw <span class="token operator">&lt;-</span> tm_shape<span class="token punctuation">(</span>wb_stunt<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_polygons<span class="token punctuation">(</span>col <span class="token operator">=</span> <span class="token string">"u5sevwasted"</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">"Severely wasted children %"</span><span class="token punctuation">,</span> palette <span class="token operator">=</span> <span class="token string">"Blues"</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_layout<span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"West Bengal"</span><span class="token punctuation">)</span>
+
+u5w <span class="token operator">&lt;-</span> tm_shape<span class="token punctuation">(</span>wb_stunt<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_polygons<span class="token punctuation">(</span>col <span class="token operator">=</span> <span class="token string">"u5wasted"</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">"Wasted children %"</span><span class="token punctuation">,</span> palette <span class="token operator">=</span> <span class="token string">"Greens"</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_layout<span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"West Bengal"</span><span class="token punctuation">)</span>
+
+u5s <span class="token operator">&lt;-</span> tm_shape<span class="token punctuation">(</span>wb_stunt<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_polygons<span class="token punctuation">(</span>col <span class="token operator">=</span> <span class="token string">"u5stunted"</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">"Stunted children %"</span><span class="token punctuation">,</span> palette <span class="token operator">=</span> <span class="token string">"Oranges"</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_layout<span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"West Bengal"</span><span class="token punctuation">)</span>
+
+u5u <span class="token operator">&lt;-</span> tm_shape<span class="token punctuation">(</span>wb_stunt<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_polygons<span class="token punctuation">(</span>col <span class="token operator">=</span> <span class="token string">"u5underweight"</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">"Underweight children %"</span><span class="token punctuation">,</span> palette <span class="token operator">=</span> <span class="token string">"BuPu"</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_layout<span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"West Bengal"</span><span class="token punctuation">)</span>
+
+tmap_arrange<span class="token punctuation">(</span>u5u<span class="token punctuation">,</span> u5s<span class="token punctuation">,</span> u5w<span class="token punctuation">,</span> u5sw<span class="token punctuation">)</span></code></pre>
+<p><picture><source type="image/avif" srcset="/blog/2019-07-16-india-nfhs-map-child-malnutrition/aicclAcGKz-713.avif 713w"><source type="image/webp" srcset="/blog/2019-07-16-india-nfhs-map-child-malnutrition/aicclAcGKz-713.webp 713w"><img loading="lazy" decoding="async" src="/blog/2019-07-16-india-nfhs-map-child-malnutrition/aicclAcGKz-713.png" alt="wb_maln.png" width="713" height="532"></picture></p>
+<h2 id="full-script">Full script</h2>
+<pre class="language-r" tabindex="0"><code class="language-r">library<span class="token punctuation">(</span>sf<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>tidyverse<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>tmap<span class="token punctuation">)</span> 
+
+sf <span class="token operator">&lt;-</span> st_read<span class="token punctuation">(</span><span class="token string">"geodata/Census_2011/2011_Dist.shp"</span><span class="token punctuation">)</span>
+
+files <span class="token operator">&lt;-</span> list<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+files <span class="token operator">&lt;-</span> list.files<span class="token punctuation">(</span><span class="token string">"data/WB"</span><span class="token punctuation">,</span> pattern<span class="token operator">=</span><span class="token string">".csv"</span><span class="token punctuation">,</span> recursive<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">,</span> full.names<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">)</span>
+df <span class="token operator">&lt;-</span> data.frame<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span>f <span class="token keyword">in</span> files<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  df<span class="token punctuation">[</span>f<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> as.numeric<span class="token punctuation">(</span>str_split_fixed<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token string">"_"</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  x <span class="token operator">&lt;-</span> read.csv<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+  u5stunted <span class="token operator">&lt;-</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span>length<span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token comment"># accounts for some files having 3 columns, some 4</span>
+  u5wasted <span class="token operator">&lt;-</span> x<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span>length<span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+  u5sevwasted <span class="token operator">&lt;-</span> x<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span>length<span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+  u5underweight <span class="token operator">&lt;-</span> x<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span>length<span class="token punctuation">(</span>colnames<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+  df<span class="token punctuation">[</span>f<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> u5stunted
+  df<span class="token punctuation">[</span>f<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> u5wasted
+  df<span class="token punctuation">[</span>f<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> u5sevwasted
+  df<span class="token punctuation">[</span>f<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">&lt;-</span> u5underweight
+
+<span class="token punctuation">}</span>
+
+colnames<span class="token punctuation">(</span>df<span class="token punctuation">)</span> <span class="token operator">&lt;-</span> c<span class="token punctuation">(</span><span class="token string">"censuscode"</span><span class="token punctuation">,</span> <span class="token string">"u5stunted"</span><span class="token punctuation">,</span> <span class="token string">"u5wasted"</span><span class="token punctuation">,</span> <span class="token string">"u5sevwasted"</span><span class="token punctuation">,</span> <span class="token string">"u5underweight"</span><span class="token punctuation">)</span>
+
+wb_maln <span class="token operator">&lt;-</span> right_join<span class="token punctuation">(</span>sf<span class="token punctuation">,</span> df<span class="token punctuation">)</span>
+
+tm_shape<span class="token punctuation">(</span>wb_stunt<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_polygons<span class="token punctuation">(</span>col <span class="token operator">=</span> <span class="token string">"u5sevwasted"</span><span class="token punctuation">,</span> palette <span class="token operator">=</span> <span class="token string">"Greens"</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_layout<span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"West Bengal"</span><span class="token punctuation">)</span>
+
+u5sw <span class="token operator">&lt;-</span> tm_shape<span class="token punctuation">(</span>wb_stunt<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_polygons<span class="token punctuation">(</span>col <span class="token operator">=</span> <span class="token string">"u5sevwasted"</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">"Severely wasted children %"</span><span class="token punctuation">,</span> palette <span class="token operator">=</span> <span class="token string">"Blues"</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_layout<span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"West Bengal"</span><span class="token punctuation">)</span>
+
+u5w <span class="token operator">&lt;-</span> tm_shape<span class="token punctuation">(</span>wb_stunt<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_polygons<span class="token punctuation">(</span>col <span class="token operator">=</span> <span class="token string">"u5wasted"</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">"Wasted children %"</span><span class="token punctuation">,</span> palette <span class="token operator">=</span> <span class="token string">"Greens"</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_layout<span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"West Bengal"</span><span class="token punctuation">)</span>
+
+u5s <span class="token operator">&lt;-</span> tm_shape<span class="token punctuation">(</span>wb_stunt<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_polygons<span class="token punctuation">(</span>col <span class="token operator">=</span> <span class="token string">"u5stunted"</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">"Stunted children %"</span><span class="token punctuation">,</span> palette <span class="token operator">=</span> <span class="token string">"Oranges"</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_layout<span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"West Bengal"</span><span class="token punctuation">)</span>
+
+u5u <span class="token operator">&lt;-</span> tm_shape<span class="token punctuation">(</span>wb_stunt<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_polygons<span class="token punctuation">(</span>col <span class="token operator">=</span> <span class="token string">"u5underweight"</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">"Underweight children %"</span><span class="token punctuation">,</span> palette <span class="token operator">=</span> <span class="token string">"BuPu"</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  tm_layout<span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"West Bengal"</span><span class="token punctuation">)</span>
+
+tmap_arrange<span class="token punctuation">(</span>u5u<span class="token punctuation">,</span> u5s<span class="token punctuation">,</span> u5w<span class="token punctuation">,</span> u5sw<span class="token punctuation">)</span></code></pre>
+<h2 id="footnotes">Footnotes</h2>
+<p>[^1]: <a href="https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html#options-and-styles">tmap: Getting started</a> // <a href="https://geocompr.robinlovelace.net/adv-map.html#static-maps">Geocomputation with R: Making Maps with R</a></p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2019-06-27-map-of-hackney/">Map of Hackney</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2019-07-16-india-nfhs-scrape-pdfs-r/">Using R to scrape Indian health survey data from PDFs</a></li>
+</ul>
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/2019-07-16-india-nfhs-map-child-malnutrition/` was built on 2025-03-18T20:39:55.674Z -->
+		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
+	</body>
+</html>

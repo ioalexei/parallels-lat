@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>2024 ▸ 07 ▸ Weeknote</title>
+		<meta name="description" content="Mostly maps">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Parallels">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+		<link rel="me" href="https://mapstodon.space/@alexei">
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">Parallels</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1 id="2024-07-weeknote">2024 ▸ 07 ▸ Weeknote</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2024-02-16">16 February 2024</time></li>
+</ul>
+
+<p>This week I’ve been splitting my time between finishing off a webmap request, making progress on some data processing tasks and revisiting an older data processing project to udpate it. I also joined the second workshop of Third Sector Lab’s Open Working programme, which had lots of good advice for writing online.</p>
+<h2 id="refugee-services-webmap">Refugee Services webmap</h2>
+<p><picture><source type="image/avif" srcset="/blog/2024-07-weeknote/TsQCAHGiiz-622.avif 622w"><source type="image/webp" srcset="/blog/2024-07-weeknote/TsQCAHGiiz-622.webp 622w"><img loading="lazy" decoding="async" src="/blog/2024-07-weeknote/TsQCAHGiiz-622.png" alt="Screenshot of the webmap for the Refugee Services team" width="622" height="375"></picture></p>
+<p>Back in December 2023, our Refugee Services team requested an interactive map they can use to identify contacts in different regions. We’ve been through a few rounds of feedback and edits and it’s now almost ready. I spent some time this week exploring whether some nice-to-haves are possible or not in the <a href="https://www.esri.com/arcgis-blog/products/arcgis-online/mapping/introducing-zone-lookup/">Zone Lookup webapp template</a> we’re using and testing out different options for displaying data in pop-ups.</p>
+<p>The data is based on a table join between a spreadsheet with contact information and a boundary layer with the outlines of the different operating regions. Frustratingly, ArcGIS Online doesn’t have an option to refresh the join if the source data is updated. Existing data can be edited, which should meet 90% of the team’s needs, but when new contacts are added I’ll need to re-run the join and swap out the existing layer.</p>
+<h2 id="debugging-arcgis-online-content-groups">Debugging ArcGIS Online content groups</h2>
+<p>I spent Thursday morning trying to figure out why I couldn’t add people to the content group to make updates to the contacts dataset, and after checking every setting I could think of asked a colleague for help. He suggested changing the <a href="https://doc.arcgis.com/en/arcgis-online/administer/roles.htm">user types</a> from Data Editor to Publisher, which worked and fixed the problem. The difference between the user types isn’t well documented on the ESRI site, so we’re not sure if this behaviour is intetional or a bug.</p>
+<h2 id="working-with-the-acled-api">Working with the ACLED API</h2>
+<p><picture><source type="image/avif" srcset="/blog/2024-07-weeknote/Jv4RYH1Os5-720.avif 720w"><img loading="lazy" decoding="async" src="/blog/2024-07-weeknote/Jv4RYH1Os5-720.webp" alt="Screenshot of ACLED website showing conflict data for the Middle East in January 2024" width="720" height="470"></picture></p>
+<p>I finished writing a script to create an internal copy of <a href="https://acleddata.com/">ACLED’s</a> conflict dataset for the countries we’re most interested in. I thought it would be quick but the API turned out to be slightly more complex than I had thought and I’ve been chipping away at it over two weeks. Some records get changed after publication and others get deletion notices issued on a separate API endpoint, so I had to take these into account to make sure our dataset stays accurate over time.</p>
+<p>I also hit some limits with updating large numbers of records using the ArcGIS Online Python API — I solved it by adding a loop that uploads new data in batches of 2,500 records so that it doesn’t hit the API limit and cause an error.</p>
+<h2 id="updating-python-processing-script">Updating Python processing script</h2>
+<p>A server I’ve been pulling data from has been moved to a new location, so I revisited the first Python script I wrote to feed a layer on ArcGIS Online. Since I wrote it, I’ve discovered better ways of doing some of the processing, so I rewrote it and cut the length by about half. The main changes were:</p>
+<ul>
+<li>Using the <a href="https://docs.python.org/3/library/logging.html#module-logging"><code>logging</code></a> package to handle logging instead of a combination of <code>print</code> and updating a text file</li>
+<li>Moving the geodata processing from <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/what-is-arcpy-.htm"><code>arcpy</code></a> to <a href="https://geopandas.org/"><code>geopandas</code></a>. I started out using arcpy because I’d scoped out the workflow in ArcGIS Pro and then directly translated the steps into code. Performing the same actions in Geopandas is much more succinct, and Geopandas also does the same processing slightly quicker.</li>
+</ul>
+<p>(I agree with <a href="https://geohaff.com/post/avoid-arcpy/">Matthew Haffner’s advice</a> to avoid arcpy and use geopandas wherever you can.)</p>
+<h2 id="pyqgis-refresher">PyQGIS refresher</h2>
+<p>On and off through the week I’ve been spending time refamilisarising myself with <a href="https://qgis.org/pyqgis/master/">QGIS’ Python interface</a> and how it works. I did a week on this back in 2018 as part of my GIS MSc but my knowledge is rusty. It’s been helpful to get my head around how the classes work in QGIS and how to use the <a href="https://docs.qgis.org/3.28/en/docs/pyqgis_developer_cookbook/">various</a> <a href="https://qgis.org/pyqgis/3.28/">documentation</a> sites to understand what’s possible. Eventually I’d like to explore building a plugin to help with tricky tasks like setting up layouts and aligning mismatched boundaries (more on this in the future).</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-02-06-video-qgis-feature-frenzy/">Video: QGIS feature frenzy</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-02-21-an-plus-naga-squared/">An plus naga squared</a></li>
+</ul>
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/2024-07-weeknote/` was built on 2025-03-18T20:39:55.685Z -->
+		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
+	</body>
+</html>
