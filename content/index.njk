@@ -4,7 +4,7 @@ const eleventyNavigation = {
 	order: 1
 };
 
-const numberOfLatestPostsToShow = 3;
+const numberOfLatestPostsToShow = 10;
 ---
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
@@ -27,3 +27,5 @@ const numberOfLatestPostsToShow = 3;
 	{%- endfor %}
 </ul>
 #}
+
+<p>Follow on <a href="https://britishredcrosssociety.github.io/gis_im_weeknotes/">RSS</a></p>
