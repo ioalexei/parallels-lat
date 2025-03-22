@@ -257,11 +257,6 @@
 	</url>
 	
 	<url>
-		<loc>https://parallels.lat/blog/2025-03-21-john-snow-cholera-map-3d-print/</loc>
-		<lastmod>2024-11-21</lastmod>
-	</url>
-	
-	<url>
 		<loc>https://parallels.lat/about/</loc>
 		<lastmod>2025-01-02</lastmod>
 	</url>
@@ -292,7 +287,12 @@
 	</url>
 	
 	<url>
-		<loc>https://parallels.lat/feed/feed.xml</loc>
+		<loc>https://parallels.lat/blog/2025-03-21-john-snow-cholera-map-3d-print/</loc>
 		<lastmod>2025-03-21</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/feed/feed.xml</loc>
+		<lastmod>2025-03-22</lastmod>
 	</url>
 </urlset>

@@ -1,5 +1,5 @@
 ---
-date: 2024-11-21T19:39:00
+date: 2025-03-21T12:54:00
 title: John Snow cholera map wall art
 tags:
   - 30daymapchallenge
