@@ -298,6 +298,16 @@
 	
 	<url>
 		<loc>https://parallels.lat/feed/feed.xml</loc>
-		<lastmod>2025-03-27</lastmod>
+		<lastmod>2025-05-16</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2025-05-16-data-workers-inquiry/</loc>
+		<lastmod>2025-05-16</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/blog/2025-05-16-geospatial-cryptic-crossword/</loc>
+		<lastmod>2025-05-16</lastmod>
 	</url>
 </urlset>
