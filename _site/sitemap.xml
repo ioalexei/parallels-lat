@@ -312,12 +312,17 @@
 	</url>
 	
 	<url>
-		<loc>https://parallels.lat/feed/feed.xml</loc>
+		<loc>https://parallels.lat/blog/2025-06-21-typography-in-space-1/</loc>
 		<lastmod>2025-06-21</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://parallels.lat/blog/2025-06-21-typography-in-space-1/</loc>
-		<lastmod>2025-06-21</lastmod>
+		<loc>https://parallels.lat/blog/2025-06-22-polish-cycling-matchbox-labels/</loc>
+		<lastmod>2025-06-22</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://parallels.lat/feed/feed.xml</loc>
+		<lastmod>2025-06-22</lastmod>
 	</url>
 </urlset>
