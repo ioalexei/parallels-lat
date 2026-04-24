@@ -1,10 +1,7 @@
 ---
-title: '2024 ▸ 23 ▸ Postcode area centres, API documentation, travel time to events'
+title: 2024 ▸ 23 ▸ Postcode area centres, API documentation, travel time to events
 date: 2024-07-11
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: weeknotes
 draft: false
 ---
 
@@ -21,7 +18,7 @@ I made the dataset with Python by using the [ONS Postcode Directory](https://geo
 3. Create a new column for the postcode area (select the postcode text before the space)
 4. Using Pandas, group by the postcode area and aggregate the lat and long columns by taking the mean of the values
 
-![Sample image of mean centres for UK postcode areas](../assets/images/c78805ed.png)
+![Sample image of mean centres for UK postcode areas]({attach}/images/c78805ed.png)
 _Sample image of mean centres for UK postcode areas_
 
 The ONSPD is released under the [Open Government License](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/), which means we can make this adaptation available for other people to use as well — so it’s hosted on [ArcGIS Online.](https://britishredcross.maps.arcgis.com/home/item.html?id=c65598ef0b1a476189b11eb7a3e3c8b8#overview)

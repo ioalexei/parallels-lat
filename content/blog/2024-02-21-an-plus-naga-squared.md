@@ -1,10 +1,7 @@
 ---
-title: 'An plus naga squared'
+title: An plus naga squared
 date: 2024-02-21
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: unicode, cuneiform
 draft: false
 ---
 
@@ -16,6 +13,6 @@ Unicode:
 
 Image: 
 
-![an-plus-naga-squared.png](../assets/images/5328ee10.png)
+![an-plus-naga-squared.png]({attach}/images/5328ee10.png)
 
 Lots more lovely cuneiform unicode examples on [the Wikipedia page](https://en.wikipedia.org/wiki/Cuneiform_(Unicode_block))

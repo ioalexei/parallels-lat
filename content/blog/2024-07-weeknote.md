@@ -1,17 +1,14 @@
 --- 
-title: "2024 ▸ 07 ▸ Weeknote"
+title: 2024 ▸ 07 ▸ Weeknote
 date: 2024-02-16
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: weeknotes
 draft: false
 ---
 
 This week I’ve been splitting my time between finishing off a webmap request, making progress on some data processing tasks and revisiting an older data processing project to udpate it. I also joined the second workshop of Third Sector Lab’s Open Working programme, which had lots of good advice for writing online.
 
 ## Refugee Services webmap
-![Screenshot of the webmap for the Refugee Services team](../assets/images/4711023c.png)
+![Screenshot of the webmap for the Refugee Services team]({attach}/images/4711023c.png)
 
 Back in December 2023, our Refugee Services team requested an interactive map they can use to identify contacts in different regions. We’ve been through a few rounds of feedback and edits and it’s now almost ready. I spent some time this week exploring whether some nice-to-haves are possible or not in the [Zone Lookup webapp template](https://www.esri.com/arcgis-blog/products/arcgis-online/mapping/introducing-zone-lookup/) we’re using and testing out different options for displaying data in pop-ups.
 
@@ -23,7 +20,7 @@ I spent Thursday morning trying to figure out why I couldn’t add people to the
 
 ## Working with the ACLED API
 
-![Screenshot of ACLED website showing conflict data for the Middle East in January 2024](../assets/images/085c4f65.webp)
+![Screenshot of ACLED website showing conflict data for the Middle East in January 2024]({attach}/images/085c4f65.webp)
 
 I finished writing a script to create an internal copy of [ACLED’s](https://acleddata.com/) conflict dataset for the countries we’re most interested in. I thought it would be quick but the API turned out to be slightly more complex than I had thought and I’ve been chipping away at it over two weeks. Some records get changed after publication and others get deletion notices issued on a separate API endpoint, so I had to take these into account to make sure our dataset stays accurate over time.
 

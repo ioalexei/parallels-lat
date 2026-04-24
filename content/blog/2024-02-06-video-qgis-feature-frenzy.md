@@ -1,10 +1,7 @@
 ---
-title: "Video: QGIS feature frenzy"
+title: Video: QGIS feature frenzy
 date: 2024-02-06
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: qgis, foss4g, john-bryant, nyall-dawson
 draft: false
 ---
 Watched John Bryant & Nyall Dawson's [QGIS Feature Frenzy](https://www.youtube.com/watch?v=K10DZaNPEEk) from the [2023 FOSS4G State of the Map Oceania](https://2023.foss4g-oceania.org/) conference. 

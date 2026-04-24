@@ -1,10 +1,7 @@
 ---
-title: 'Automating geodata processing and sharing at BRC'
+title: Automating geodata processing and sharing at BRC
 date: 2023-11-17
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: work, python
 draft: false
 ---
 

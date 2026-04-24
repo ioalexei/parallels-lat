@@ -1,10 +1,7 @@
 ---
-title: 'Amnesty website open-sourced'
+title: Amnesty website open-sourced
 date: 2024-05-31
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: amnesty-international, open-source, 
 draft: false
 ---
 

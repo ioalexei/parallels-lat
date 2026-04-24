@@ -1,10 +1,7 @@
 ---
-title: "Two podcasts about Google Maps"
+title: Two podcasts about Google Maps
 date: 2022-05-11
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: podcast, google-maps, witness-history, mapscaping
 draft: false
 ---
 Two recent podcasts with interviews about Google Maps. 

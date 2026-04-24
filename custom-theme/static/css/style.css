@@ -1,0 +1,186 @@
+@font-face {
+  font-family: "Weightless";
+  src: url("/theme/fonts/WeightlessV1-Regular.woff2") format("woff2");
+}
+
+
+body {
+  background: #fbfaf8;
+  color: #444444;
+}
+
+:root {
+  --base-font-size: 16px;
+  --spacing: calc(1.1 * 16px);
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.6em;
+  font-family: ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: #e85a48;
+  color: #e85a48;
+}
+
+article a {
+  text-decoration: underline;
+  color: #444444;
+  text-decoration-color: #e85a48;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+pre {
+  overflow-wrap: break-word;
+  margin: 1em 0em var(--spacing) 0em;
+}
+
+p:last-child,
+blockquote:last-child,
+ul:last-child,
+ol:last-child,
+pre:last-child {
+  margin-bottom: 0px;
+}
+
+h1 {
+  font-size: 2.625em;
+  line-height: 1.2em;
+  color: #e85a48;
+  font-family: Weightless;
+}
+
+h2 {
+  font-size: 2.0625em;
+  line-height: 1.2em;
+  font-family: Weightless;
+
+}
+
+h3 {
+  font-size: 1.625em;
+  line-height: 1.2em;
+  font-family: Weightless;
+
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+h5 {
+  font-size: 0.8125em;
+}
+
+a {
+  color: #e85a48;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+ol,
+ul {
+  padding-left: 1.2em;
+  margin-bottom: var(--spacing);
+}
+
+ol li,
+ul li {
+  margin: 0.5em 0em;
+}
+
+blockquote {
+  background-color: #eeeeee;
+  border-radius: 8px;
+}
+
+cite {
+  display: block;
+}
+
+
+.page-list {
+  display: grid;
+  gap: 0.5em;
+  border-top: dotted 1px #e85a48;
+  padding-top: 0.5em;
+}
+
+.page-list > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+  border-bottom: dotted 1px #e85a48;
+  padding-bottom: 0.5em;
+}
+
+.page-list a {
+  flex-shrink: 0;
+}
+
+.page-list aside {
+  font-style: italic;
+  font-size: 0.95em;
+  text-align: right;
+  max-width: 50%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body,
+main {
+  min-height: 100dvh;
+}
+
+main {
+  max-width: 42em;
+  width: 100%;
+  margin: auto;
+  padding: 2em 1.4em;
+}
+
+nav {
+  margin-bottom: 4em;
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+nav a {
+  text-decoration: none;
+}

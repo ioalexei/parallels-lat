@@ -1,13 +1,10 @@
 ---
-title: "Map of Hackney"
+title: Map of Hackney
 date: 2019-06-27
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: map, hackney
 draft: false
 ---
-![hackney.png](../assets/images/f8a71975.png)
+![hackney.png]({attach}/images/f8a71975.png)
 
 A map I made of Hackney in London, using QGIS and Ordnance Survey open data. 
 
@@ -15,4 +12,4 @@ The place names are pulled from the OS data too, although there are some odd cho
 
 The style is loosely based on a [1970 map of Ceylon](https://www.loc.gov/item/73691924/)  I came across on the Library of Congress' online map archive  (which is full of cartographic inspiration).
 
-![ceylon.jpg](../assets/images/ca0f2521.jpeg)
+![ceylon.jpg]({attach}/images/ca0f2521.jpeg)

@@ -1,14 +1,11 @@
 ---
-title: '2024 ▸ 12 ▸ Editing, data conversations, counting trees'
+title: 2024 ▸ 12 ▸ Editing, data conversations, counting trees
 date: 2024-03-29
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: weeknotes
 draft: false
 ---
 # Reviewing GIS training content
-![Git Blame view for a set of changes to the training material.](../assets/images/8153ec00.png)
+![Git Blame view for a set of changes to the training material.]({attach}/images/8153ec00.png)
 
 _[Git Blame](https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file) view for a set of changes to the training material. [Source](https://github.com/GIScience/gis-training-resource-center/blame/main/content/Modul_2/en_qgis_data_sources_ex1.md)._
 
@@ -23,7 +20,7 @@ NN Group have an archive of research and best practice on [writing on the web](h
 I had some useful discussions with people on other teams about how to expand the number of internal datasets we make available as geodata on ArcGIS Online. Having put together a proof of concept last year with data from one department, I’m now talking with people about what other departments (and datasets) we can use the same approach with. We’ve decided to test adding (suitably desensitised) volunteer locations and crisis response activity data. It’s early days so far but satisfying to see that the approach is useful and getting some traction.
 
 # Street View Green View
-![Sample image used in the Green View analysis](../assets/images/1aac7b5d.jpeg)
+![Sample image used in the Green View analysis]({attach}/images/1aac7b5d.jpeg)
 
 _Sample image used in the Green View analysis. Source: Mapillary._
 

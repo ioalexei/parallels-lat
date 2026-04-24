@@ -1,10 +1,7 @@
 ---
-title: "Using R to map child malnutrition in India"
+title: Using R to map child malnutrition in India
 date: 2019-07-16
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: R, india, malnutrition
 draft: false
 ---
 In the previous post, I discussed a method for extracting district-level child malnutrition data from Indian government PDFs. This post will look at mapping that data. 
@@ -76,7 +73,7 @@ tm_shape(wb_stunt) +
   tm_polygons(col = "u5sevwasted", title="Severely wasted children %", palette = "Greens") + 
   tm_layout(title = "West Bengal")
 ```
-![wb_sevwasted.png](../assets/images/c8803850.png)
+![wb_sevwasted.png]({attach}/images/c8803850.png)
 
 `tmap_arrange` also makes it fairly easy to plot multiple maps, so I can show the distribution of each of the vairables in a single image. [This page](https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/) has a handy reference to the naming of colour schemes. 
 
@@ -99,7 +96,7 @@ u5u <- tm_shape(wb_stunt) +
 
 tmap_arrange(u5u, u5s, u5w, u5sw)
 ```
-![wb_maln.png](../assets/images/01286c57.png)
+![wb_maln.png]({attach}/images/01286c57.png)
 
 ## Full script
 ```r

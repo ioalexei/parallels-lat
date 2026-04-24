@@ -1,10 +1,7 @@
 ---
-title: "Python: Convert a folder of SVGs to PNGs"
+title: Python: Convert a folder of SVGs to PNGs
 date: 2023-02-18
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: python, graphics, file-conversion
 draft: false
 ---
 For a work thing I had a folder of SVG icons to use for map symbology that I wanted to also have as PNGs to use in PowerPoints, Word docs, etc. when needed. 

@@ -1,10 +1,7 @@
 ---
-title: '2024 ▸ 08 ▸ Weeknote'
+title: 2024 ▸ 08 ▸ Weeknote
 date: 2024-02-27
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: weeknotes
 draft: false
 ---
 

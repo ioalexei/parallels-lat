@@ -1,10 +1,7 @@
 ---
-title: "Maps for report on palm oil production and indigenous rights in the Amazon"
+title: Maps for report on palm oil production and indigenous rights in the Amazon
 date: 2022-09-22
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: map, global-witness, amazon
 draft: false
 ---
 Some maps I made for a Global Witness report on the effects of palm oil production in the Amazon are now online: [Global Witness: Amazon Palm](

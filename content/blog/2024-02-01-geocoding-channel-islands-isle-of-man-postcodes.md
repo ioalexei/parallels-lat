@@ -1,10 +1,7 @@
 ---
-title: "Geocoding Channel Islands & Isle of Man postcodes"
+title: Geocoding Channel Islands & Isle of Man postcodes
 date: 2024-02-01
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: geocoding, channel-islands, isle-of-man, crown-depenencies, postcodes, python
 draft: false
 ---
 Wrote up some work I did for BRC, setting up a system for basic geocoding of postcodes in the Channel Islands and Isle of Man. 

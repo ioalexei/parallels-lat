@@ -1,14 +1,14 @@
 ---
-title: '2024 ▸ 09 ▸ Weeknote'
+title: 2024 ▸ 09 ▸ Weeknote
 date: 2024-03-05
-tags: posts
+tags: weeknotes
 ---
 
 Fairly quiet week this week.
 
 ## Postcode area boundaries from open data
 
-![postcode areas](../assets/images/5d3f8c8c.png)
+![postcode areas]({attach}/images/5d3f8c8c.png)
 *Postcode areas generated from open data*
 
 I did some testing on a way to create postcode area boundaries from open data. A lot of postcode data has been opened up in recent years, but the area covered by a postcode is still a paid product — only the locations of the central points are open data.

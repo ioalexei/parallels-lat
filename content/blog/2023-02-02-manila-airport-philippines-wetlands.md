@@ -1,10 +1,7 @@
 ---
-title: "Maps for report on airport project in Philippines"
+title: Maps for report on airport project in Philippines
 date: 2023-02-02
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: map, philippines, global-witness
 draft: false
 ---
 Some maps I made for a Global Witness report on the environmental and community impact of a new aiport near Manile are now online: [Global Witness: Runway risk](https://www.globalwitness.org/en/campaigns/holding-corporates-account/runaway-risk/). 

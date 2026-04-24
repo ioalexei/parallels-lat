@@ -1,10 +1,7 @@
 ---
-title: '2024 ▸ 18 ▸Training debrief, deprivation mapping and community gardening'
+title: 2024 ▸ 18 ▸Training debrief, deprivation mapping and community gardening
 date: 2024-05-24
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: weeknotes
 draft: false
 ---
 
@@ -12,7 +9,7 @@ draft: false
 
 Following the GIS training we ran last week, I had a debrief call with the other facilitators. We had good feedback from the trainees but also lots of input from us as facilitators on how to improve the training. We decided to take time to consolidate this feedback and implement a more robust project management structure to help us decide which changes to prioritise in the short term and which to leave for later.
 
-![Screenshot of closed issues from the GIS training platform’s GitHub repo](../assets/images/6308bd78.png)
+![Screenshot of closed issues from the GIS training platform’s GitHub repo]({attach}/images/6308bd78.png)
 
 _Screenshot of closed issues from the GIS training platform’s [GitHub repo](https://github.com/GIScience/gis-training-resource-center)_
 
@@ -21,7 +18,7 @@ We decided to use GitHub’s [project management features](https://docs.github.c
 I’ve been spending some time reading through the IFRC’s [Surge Learning Toolbox](https://surgelearning.ifrc.org/) that has lots of good advice on developing trainings; we’ve already met a lot of the good practice standards but there are also things we skipped to get an initial version available quickly. Now’s a good time to reflect on where there might be gaps we should go back and fill.
 
 # Mapping deprivation across health boards
-![Screenshot of deprivation index combined with health board boundaries](../assets/images/119469e1.png)
+![Screenshot of deprivation index combined with health board boundaries]({attach}/images/119469e1.png)
 
 _Screenshot of deprivation index combined with health board boundaries. [Source](https://experience.arcgis.com/experience/dc4cb15c3c154caf991783bfb8022925/page/Information/)._
 

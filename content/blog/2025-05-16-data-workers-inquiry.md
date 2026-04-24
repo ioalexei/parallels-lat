@@ -1,7 +1,7 @@
 ---
 date: 2025-05-16T17:09:00
 title: Data Workers' Inquiry
-tags: posts, workers-inquiry, data-workers, 
+tags: workers-inquiry, data-workers, 
 ---
 [How we made Data Workers' Inquiry](https://data-workers.org/about/how-to-dwi/)
 

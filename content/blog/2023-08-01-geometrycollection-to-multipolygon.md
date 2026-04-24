@@ -1,10 +1,7 @@
 ---
-title: "GeoPandas: Convert GeometryCollection to MultiPolygon"
+title: GeoPandas: Convert GeometryCollection to MultiPolygon
 date: 2023-08-01
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: geopandas, python, geometry
 draft: false
 ---
 I've been using food security data from the the [Integrated Phase Classificaiton API](https://www.ipcinfo.org/). As it's a work in progress, there are some quirks for how data is returned for different countries. When accessing the Niger data, I noticed my standard script failed as the geometries are returned as a GeometryCollection rather than as simple MultiPolygon. 

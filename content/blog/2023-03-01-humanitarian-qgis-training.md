@@ -1,10 +1,7 @@
 ---
-title: "Running a humanitarian GIS training at the British Red Cross"
+title: Running a humanitarian GIS training at the British Red Cross
 date: 2023-03-01
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: training, qgis
 draft: false
 ---
 Published a post on the team blog on [Running a humanitarian GIS training at BRC](

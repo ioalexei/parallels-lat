@@ -1,13 +1,13 @@
 ---
 date: 2025-05-16T17:20:00
 title: Geospatial cryptic crossword
-tags: posts, geospatial, crossword, puzzle
+tags: geospatial, crossword, puzzle
 ---
 
 [Barry Rowlingson](https://mapstodon.space/@geospacedman@mastodon.social) shared a [geospatial-themed cryptic crossword](https://b-rowlingson.gitlab.io/geocrossword/) 
 in the newsletter of the Lancaster Data Science Institute's Geospatial group.
 
-![geospatial crossword](../assets/images/geospatial-crossword.png)
+![geospatial crossword]({attach}/images/geospatial-crossword.png)
 
 I enjoyed completing it - the [Exet](https://github.com/viresh-ratnakar/exet) web app for building and sharing the crossword is neat too. 
 

@@ -1,10 +1,7 @@
 ---
-title: 'Creating postcode polygons from UPRN data'
+title: Creating postcode polygons from UPRN data
 date: 2024-03-04
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: postcodes, python, 
 draft: false
 ---
 

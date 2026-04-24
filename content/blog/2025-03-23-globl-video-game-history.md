@@ -1,7 +1,7 @@
 ---
 date: 2025-03-23T10:39:00
 title: Global video game history
-tags: posts, video-games, history, gaming, books
+tags: video-games, history, gaming, books
 ---
 
 Enjoyed this article by Felipe Pepe: [The Gentrification of Video Game History](https://felipepepe.medium.com/the-gentrification-of-video-game-history-dfe11f1e08ae).

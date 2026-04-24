@@ -1,10 +1,7 @@
 ---
-title: "Creating a Shaded Relief Map in QGIS"
+title: Creating a Shaded Relief Map in QGIS
 date: 2023-10-25
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: shaded-relief, cartography, qgis, terrain
 draft: false
 ---
 Published a post on the Learn SIMS site on how I add [terrain visualisation to maps in QGIS](https://learn-sims.org/geospatial/creating-a-shaded-relief-map-in-qgis/).

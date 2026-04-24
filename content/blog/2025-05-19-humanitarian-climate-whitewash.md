@@ -1,7 +1,7 @@
 ---
 date: 2025-05-19T13:50:00
 title: Humanitarian climate whitewashing
-tags: posts, climate-change, humanitarian, aid-industry
+tags: climate-change, humanitarian, aid-industry
 --- 
 Irwin Loy, writing for The New Humanitarian, highlights the trend of humanitarian organisations removing references to climate change 
 from their websites: 

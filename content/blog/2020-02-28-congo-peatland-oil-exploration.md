@@ -1,10 +1,7 @@
 ---
-title: 'Maps for report on oil exploration in Congo peatlands'
+title: Maps for report on oil exploration in Congo peatlands
 date: 2020-02-28
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: map, congo, global-witness
 draft: false
 ---
 

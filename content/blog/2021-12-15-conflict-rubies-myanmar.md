@@ -1,10 +1,7 @@
 ---
-title: 'Maps for report on conflict rubies in Myanmar'
+title: Maps for report on conflict rubies in Myanmar
 date: 2021-12-15
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: map, myanmar, global-witness
 draft: false
 ---
 

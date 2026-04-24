@@ -1,10 +1,7 @@
 ---
-title: "Red Cross/Red Crescent geospatial community in 2023"
+title: Red Cross/Red Crescent geospatial community in 2023
 date: 2024-01-31
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: rcrc-geo
 draft: false
 ---
 At work we have a geospatial community of practice for people working on geo stuff in different Red Cross/Red Crescent societies - a fancy name for a regular Zoom call. It's a chance for us to hear what other people are working on, what they're using geospatial tools and data for, and ask questions. 

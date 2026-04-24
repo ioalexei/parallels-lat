@@ -1,10 +1,7 @@
 ---
-title: '2024 ▸ 17 ▸Climate risk and service user maps, GIS training'
+title: 2024 ▸ 17 ▸Climate risk and service user maps, GIS training
 date: 2024-05-09
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: weeknotes
 draft: false
 ---
 
@@ -12,7 +9,7 @@ draft: false
 
 Our team received a request to make some maps based on data from the [UK Climate Risk Indicators](https://uk-cri.org/) website, to be used in an upcoming report. It took me a long time to figure out how to download the right data — I didn’t find the website very intuitive — but once I had that sorted, I made a series of maps comparing various weather-related risks in different climate change scenarios.
 
-![Screenshot of UK Climate Risk Indicators webmap tool](../assets/images/435ec90e.png)
+![Screenshot of UK Climate Risk Indicators webmap tool]({attach}/images/435ec90e.png)
 
 _Screenshot of UK Climate Risk Indicators webmap tool_
 
@@ -22,7 +19,7 @@ I chose not to keep UKCRI’s magma palette, since a simple single-hue palette s
 
 I worked on another request that came in to repeat some analysis I helped with in 2023 to summarise where one of our services has been working with people in Wales. The source data was a list of service users by postcode [outcode](https://ideal-postcodes.co.uk/guides/uk-postcode-format) (the first part of a UK postcode, before the space), which they wanted mapping to health board boundaries.
 
-![Screenshot of Welsh health board boundaries](../assets/images/fdd1cbdb.png)
+![Screenshot of Welsh health board boundaries]({attach}/images/fdd1cbdb.png)
 
 _Screenshot of Welsh health board boundaries; service user data not shown._
 

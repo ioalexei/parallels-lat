@@ -2,14 +2,10 @@
 date: 2025-03-18T20:24:00
 title: Is it in London?
 excerpt: 
-tags:
-  - 30daymapchallenge
-  - London
-  - webmap
-  - posts
+tags: 30daymapchallenge, London, webmap
 draft: false
 ---
-![Is it in London webmap](../assets/images/is_it_london.png)
+![Is it in London webmap]({attach}/images/is_it_london.png)
 
 [Is it in London?](https://andrewl.github.io/30-day-map-challenge-2024/13-a-new-tool.html) 
 A fun webmap Andrew Larcombe made for 30daymapchallenge 2024 - it shows places 

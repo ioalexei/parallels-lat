@@ -1,10 +1,7 @@
 ---
-title: "HDX launched data access API"
+title: HDX launched data access API
 date: 2024-07-04
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: hdx, open-data
 draft: false
 ---
 The Humanitarian Data Exchange (HDX) [has launched](https://centre.humdata.org/announcing-the-hdx-humanitarian-api/) a data access API. 

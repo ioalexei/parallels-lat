@@ -1,13 +1,10 @@
 ---
-title: "India reference map"
+title: India reference map
 date: 2019-06-27
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: india, map
 draft: false
 ---
-![india-ref.png](../assets/images/2a324535.png)
+![india-ref.png]({attach}/images/2a324535.png)
 
 A reference map of India, made using QGIS and [Natural Earth](http://naturalearthdata.com/) data. 
 

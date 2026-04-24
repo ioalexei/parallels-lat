@@ -1,9 +1,9 @@
 ---
 date: 2025-01-02T17:51:00
-title: "NTS King Tubby mix"
+title: NTS King Tubby mix
 excerpt: 
 editedDate: 
-tags: ["king-tubby", "mix", "nts", "dub", "music", "posts"]
+tags: king-tubby, mix, nts, dub, music
 draft: false
 ---
 Cracking 60 min King Tubby mix on NTS from back in December: 

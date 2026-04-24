@@ -1,10 +1,7 @@
 ---
-title: "Design disaster response maps to be viewed on WhatsApp"
+title: Design disaster response maps to be viewed on WhatsApp
 date: 2024-02-01
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: cartography, whatsapp, vertical-media, minds-behind-the-maps
 draft: false
 ---
 Had a brief discussion on a call today about the pros and cons of static information products (images or PDFs) vs. interactive dashboards. 

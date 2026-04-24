@@ -1,9 +1,6 @@
 ---
-title: "Some things we worked on in 2023"
+title: Some things we worked on in 2023
 date: 2024-01-31
-excerpt: 
-editedDate:
-tags: posts
 draft: false
 ---
 

@@ -1,16 +1,13 @@
 ---
-title: "Link: Four pitfalls of spatiotemporal analysis"
+title: Link: Four pitfalls of spatiotemporal analysis
 date: 2024-02-02
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: spatial-analysis, temporal-analysis, gregor-aisch
 draft: false
 ---
-Enjoyed this post by Gregor, co-founder of [Datawrapper](https://www.datawrapper.de/), about space-time analysis:  
+Enjoyed this post by Gregor Aisch, co-founder of [Datawrapper](https://www.datawrapper.de/), about space-time analysis:  
 [Four pitfalls of spatiotemporal data analysis and how to avoid them](https://www.vis4.net/blog/2023/12/spatiotemporal-data-analysis-pitfalls/)
 
-![dwd-grid-sept-23.png](../assets/images/8ecacdff.png)
+![dwd-grid-sept-23.png]({attach}/images/8ecacdff.png)
 
 The pitfalls he talks about are: 
 

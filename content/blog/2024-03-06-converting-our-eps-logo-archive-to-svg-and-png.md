@@ -1,10 +1,7 @@
 ---
-title: 'Converting our EPS logo archive to SVG and PNG'
+title: Converting our EPS logo archive to SVG and PNG
 date: 2024-03-06
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: python, graphics, file-conversion
 draft: false
 ---
 

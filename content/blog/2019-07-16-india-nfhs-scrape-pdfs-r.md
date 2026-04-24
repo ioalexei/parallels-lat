@@ -1,10 +1,7 @@
 ---
-title: "Using R to scrape Indian health survey data from PDFs"
+title: Using R to scrape Indian health survey data from PDFs
 date: 2019-07-16
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: R, scraping, pdfs
 draft: false
 ---
 # Aim 
@@ -20,7 +17,7 @@ I wrote this script while learning R and trying to solve this particular problem
 ## Set-up
 
 To begin, let's load the necessary libraries. 
-```r
+```{r}
 library(tidyverse)
 library(stringr)
 library(tabulizer)
@@ -32,7 +29,7 @@ The [National Family Health Survey website](http://rchiips.org/nfhs/index.shtml)
 
 After experimenting with a couple of scraping packages, I found `rvest`, which seemed the most intuitive to use. This chunk reads the list on the main page and creates a list of the URLs for each state. [^1]
 
-```r
+```{r}
 nfhs_site <- "http://rchiips.org/nfhs/districtfactsheet_NFHS-4.shtml"
 
 state_pages <- read_html(nfhs_site) %>% 

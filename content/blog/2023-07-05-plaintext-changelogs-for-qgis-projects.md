@@ -1,10 +1,7 @@
 ---
-title: "Using plaintext changelogs for shared QGIS projects"
+title: Using plaintext changelogs for shared QGIS projects
 date: 2023-07-05
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: plain-text, changelogs, qgis
 draft: false
 ---
 Published a post on the Learn SIMS site on how I use [plaintext changelogs for shared QGIS projects](https://learn-sims.org/resources-and-standards/managing-product-updates-with-a-changelog/) (with some helpful edits from a colleague).

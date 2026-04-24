@@ -1,10 +1,7 @@
 ---
-title: "Map for report on dam project in DR Congo national park"
+title: Map for report on dam project in DR Congo national park
 date: 2021-12-08
-excerpt: 
- 
-editedDate:
-tags: posts
+tags: map, congo, global-witness
 draft: false
 ---
 A map I made for a Global Witness report on the environmental effects of the Sombwe dam in DR Congo is now online: [Global Witness: 

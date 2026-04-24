@@ -1,7 +1,7 @@
 ---
-title: "Hello world"
+title: Hello world
 date: 2019-06-26
 draft: false
-tags: posts
+tags: hello-world
 ---
 Keeping things simple for now. A basic site to share maps I've made while I'm studying GIS.
