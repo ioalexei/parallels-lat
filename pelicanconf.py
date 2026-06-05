@@ -16,8 +16,11 @@ ARTICLE_URL = '{date:%Y}/{slug}.html'
 
 TIMEZONE = 'Europe/London'
 DEFAULT_DATE_FORMAT = '%d %B %Y'
-
 DEFAULT_LANG = 'en'
+
+DEFAULT_METADATA = {
+    'status': 'skip',
+}
 
 TYPOGRIFY = True
 SUMMARY_MAX_LENGTH = 50
