@@ -1,6 +1,6 @@
 ---
 date: 2026-09-03T17:45:00
-title: "Jakob Nowosad: Reflections on geocomputation in R"
+title: Jakob Nowosad: Reflections on geocomputation in R
 tags: geocompR; geocompX; Jakob Nowosad; spatial data science; R
 via: [Jakob Nowosad on Mapstodon](https://mapstodon.space/@nowosad@fosstodon.org/117184822318565911)
 ---
