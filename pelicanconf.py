@@ -5,8 +5,8 @@ SITESUBTITLE = "Mostly maps."
 
 # Theme
 THEME = "custom-theme"
-STYLESHEET_URL = "theme/static/css/style.css"
-#THEME_STATIC_DIR = "theme"
+STYLESHEET_URL = "/theme/static/css/style.css"
+THEME_STATIC_DIR = "custom-theme"
 
 PATH = "content"
 ARTICLE_PATHS = ['blog']
