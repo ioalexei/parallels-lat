@@ -3,33 +3,62 @@
   src: url("/theme/fonts/WeightlessV1-Regular.woff2") format("woff2");
 }
 
+/* 1. Global Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
 
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 2. Variables */
+:root {
+  --base-font-size: 16px;
+  --spacing: calc(1.1 * var(--base-font-size));
+  --brand-color: #d94430;
+}
+
+/* 3. Base Body */
 body {
   background: #fbfaf8;
   color: #444444;
-}
-
-:root {
-  --base-font-size: 16px;
-  --spacing: calc(1.1 * 16px);
-}
-
-body {
-  font-size: 16px;
+  font-size: var(--base-font-size);
   line-height: 1.6em;
   font-family: ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
 }
 
+a {
+  color: var(--brand-color);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
 a:hover {
   text-decoration: underline;
-  text-decoration-color: #e85a48;
-  color: #e85a48;
+  text-decoration-color: var(--brand-color);
+}
+
+/* Adds a nice outline when tabbing with a keyboard */
+a:focus-visible {
+  outline: 2px dashed var(--brand-color);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 article a {
-  text-decoration: underline;
   color: #444444;
-  text-decoration-color: #e85a48;
+  text-decoration: underline;
+  text-decoration-color: var(--brand-color);
+}
+body {
+  font-size: var(--step-0);
+  line-height: 1.6; /* Crucial for scanning lists */
+  font-family: ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
 }
 
 input,
@@ -46,10 +75,19 @@ h3,
 h4,
 h5,
 h6,
-blockquote,
 pre {
   overflow-wrap: break-word;
   margin: 1em 0em var(--spacing) 0em;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance; /* Prevents typographic 'orphans' at the end of lines */
+}
+
+blockquote {
+  background-color: #eeeeee;
+  border-radius: 8px;
+  padding: 1em 1.5em; /* Gives the text room to breathe */
+  margin-left: 0; /* Aligns the box nicely with the rest of the text */
 }
 
 p:last-child,
@@ -63,7 +101,7 @@ pre:last-child {
 h1 {
   font-size: 2.625em;
   line-height: 1.2em;
-  color: #e85a48;
+  color: var(--brand-color);
   font-family: Weightless;
 }
 
@@ -90,7 +128,7 @@ h5 {
 }
 
 a {
-  color: #e85a48;
+  color: var(--brand-color);
   text-decoration: none;
   text-underline-offset: 3px;
 }
@@ -119,16 +157,18 @@ cite {
 .page-list {
   display: grid;
   gap: 0.5em;
-  border-top: dotted 1px #e85a48;
+  border-top: dotted 1px var(--brand-color);
   padding-top: 0.5em;
 }
-
+.page-list a {
+  flex-shrink: 0;
+}
 .page-list > div {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 1em;
-  border-bottom: dotted 1px #e85a48;
+  border-bottom: dotted 1px var(--brand-color);
   padding-bottom: 0.5em;
 }
 
@@ -140,7 +180,20 @@ cite {
   font-style: italic;
   font-size: 0.95em;
   text-align: right;
-  max-width: 50%;
+  flex-shrink: 0; /* Make the date the thing that refuses to shrink, not the title */
+}
+
+.post-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.post-date {
+  color: #666; /* Secondary text color */
+  font-variant-numeric: tabular-nums; /* Keeps numbers perfectly aligned */
+  flex-shrink: 0;
 }
 
 *,
