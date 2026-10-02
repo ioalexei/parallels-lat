@@ -1,8 +1,8 @@
 ---
 date: 2026-09-03T17:45:00
 title: Jakob Nowosad: Reflections on geocomputation in R
-tags: geocompR; geocompX; Jakob Nowosad; spatial data science; R
-via: [Jakob Nowosad on Mapstodon](https://mapstodon.space/@nowosad@fosstodon.org/117184822318565911)
+tags: geocompR; geocompX; Jakob Nowosad; spatial data science; R 
+via: <a href="https://mapstodon.space/@nowosad@fosstodon.org/117184822318565911">Jakob Nowosad on Mapstodon</a>
 ---
 
 I have a big soft spot for GeoCompR as it was the thing that finally made R click for me. 

@@ -13,5 +13,6 @@ ignored in typical histories of gaming.
 > in gamer circles & media — it’s a free-to-play battle royale mobile game created in Vietnam.
 
 He mentions a few interesting-sounding books: 
+
 * [Real Games: What's legitimate and what's not in contemporary videogames](https://direct.mit.edu/books/monograph/4527/Real-GamesWhat-s-Legitimate-and-What-s-Not-in) by Mia Consalvo & Christopher A. Paul 
 * [The Videogame Industry Does Not Exist](https://direct.mit.edu/books/oa-monograph/5572/The-Videogame-Industry-Does-Not-ExistWhy-We-Should) by Brendan Keogh
