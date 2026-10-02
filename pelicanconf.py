@@ -5,7 +5,7 @@ SITESUBTITLE = "Mostly maps."
 
 # Theme
 THEME = "custom-theme"
-STYLESHEET_URL = "/theme/static/css/style.css"
+STYLESHEET_URL = "/theme/static/css/simple.css"
 THEME_STATIC_DIR = "custom-theme"
 
 PATH = "content"

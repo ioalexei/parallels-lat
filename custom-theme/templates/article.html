@@ -39,12 +39,15 @@
       {% endif %}
     </header>
     {{ article.content }}
-    <footer>
-      <hr />
+    <section>
+        {% if article.via %}
+            <i><p>Via: {{ article.via }}</p></i>
+        {% endif %}
       {% if article.category %}
-        <p>
+
+      <p>
           Category: <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-        </p>
+      </p>
       {% endif %}
       {% if article.tags %}
         <p>
@@ -54,6 +57,6 @@
           {% endfor %}
         </p>
       {% endif %}
-    </footer>
+    </section>
   </article>
 {% endblock %}

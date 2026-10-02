@@ -4,15 +4,17 @@
         <h1>Parallels.lat</h1>
     {% endblock %}
 
-    <div class="page-list">
-
+    <ul class="post-list">
     {% for article in articles_page.object_list %}
-        <div>
-            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}" class="post-item">{{ article.title }}</a>
-            <p><time datetime="{{ article.date.isoformat() }}" class="post-date"> {{ article.locale_date }} </time></p>
-            </div>
+    <li class="post-item">
+        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+            title="Permalink to {{ article.title|striptags }}"
+            class="post-title">{{ article.title }}</a>
+        <time datetime="{{ article.date.isoformat() }}"
+            class="post-date"> {{ article.locale_date }} </time>
+    </li>
     {% endfor %}
-    </div>
+    </ul>
 
     {% if articles_page.has_other_pages() %}
         {% include 'pagination.html' %}
